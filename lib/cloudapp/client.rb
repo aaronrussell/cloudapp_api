@@ -25,7 +25,7 @@ module CloudApp
     end
     
     def upload(file)
-      Item.create(:upload, :file => file)
+      Item.create(:file, :path => file)
     end
   
     def delete(id)

@@ -73,7 +73,7 @@ NOTE! This is not working yet
     
     # or ..
     
-    @item = CloudApp::Item.create :upload, {:file => file_name}
+    @item = CloudApp::Item.create :file, {:path => file_name}
     
 ### Delete an item
 

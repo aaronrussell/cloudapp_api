@@ -28,12 +28,12 @@ module CloudApp
       when :bookmark
         res = post "/items", {:digest_auth => @@auth, :query => opts}
         res.ok? ? Item.new(res) : res
-      when :upload
+      when :file
         res = get "/items/new", {:digest_auth => @@auth}
         return res unless res.ok?
         res = post res['url'], {
           :headers => {"Content-Type" => "multipart/form-data"},
-          :params => res['params'].merge!(:file => "@#{opts[:file]}")
+          :params => res['params'].merge!(:file => "@#{opts[:path]}")
         }
         res.ok? ? Item.new(res) : res
       else
