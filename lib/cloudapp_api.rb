@@ -1,14 +1,14 @@
 require "httparty"
 
 ["base", "client", "httparty"].each do |inc|
-  require File.join(File.dirname(__FILE__), "cloudly", inc)
+  require File.join(File.dirname(__FILE__), "cloudapp", inc)
 end
 
-module Cloudly
+module CloudApp
   
   VERSION = "0.0.1"
   
-  def Cloudly.authenticate(username, password)
+  def CloudApp.authenticate(username, password)
     Base.authenticate(username, password)
   end
     

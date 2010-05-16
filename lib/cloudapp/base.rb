@@ -1,6 +1,6 @@
 require "httparty"
 
-module Cloudly
+module CloudApp
       
   class Base
     
@@ -31,10 +31,9 @@ module Cloudly
       when :upload
         res = get "/items/new", {:digest_auth => @@auth}
         return res unless res.ok?
-        file = "test.txt"
         res = post res['url'], {
           :headers => {"Content-Type" => "multipart/form-data"},
-          :params => res['params'].merge!(:file => "@#{file}")
+          :params => res['params'].merge!(:file => "@#{opts[:file]}")
         }
         res.ok? ? Item.new(res) : res
       else

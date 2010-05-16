@@ -4,11 +4,11 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "cloudly"
+    gem.name = "cloudapp_api"
     gem.summary = %Q{CloudApp API wrapper for Ruby, using HTTParty with an ActiveResource-like interface}
     gem.description = %Q{CloudApp API wrapper for Ruby, using HTTParty with an ActiveResource-like interface}
     gem.email = "aaron@gc4.co.uk"
-    gem.homepage = "http://github.com/aaronrussell/cloudly"
+    gem.homepage = "http://github.com/aaronrussell/cloud_app"
     gem.authors = ["Aaron Russell"]
     gem.add_dependency "httparty", ">= 0.5.2"
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"

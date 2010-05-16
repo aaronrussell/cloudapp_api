@@ -1,4 +1,4 @@
-module Cloudly
+module CloudApp
   
   class Client
     
@@ -25,7 +25,7 @@ module Cloudly
     end
     
     def upload(file)
-      Item.create(:upload, :data => file)
+      Item.create(:upload, :file => file)
     end
   
     def delete(id)
