@@ -44,7 +44,6 @@ module CloudApp
     attr_accessor :attributes
     
     def initialize(attributes = {})
-      @attributes
       load(attributes)
     end
     

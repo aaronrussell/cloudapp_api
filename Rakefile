@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "cloudapp_api"
-    gem.summary = %Q{CloudApp API wrapper for Ruby, using HTTParty with an ActiveResource-like interface}
-    gem.description = %Q{CloudApp API wrapper for Ruby, using HTTParty with an ActiveResource-like interface}
+    gem.summary = %Q{A simple Ruby wrapper for the CloudApp API. Uses HTTParty with a simple ActiveResource-like interface.}
+    gem.description = %Q{A simple Ruby wrapper for the CloudApp API. Uses HTTParty with a simple ActiveResource-like interface.}
     gem.email = "aaron@gc4.co.uk"
     gem.homepage = "http://github.com/aaronrussell/cloud_app"
     gem.authors = ["Aaron Russell"]
