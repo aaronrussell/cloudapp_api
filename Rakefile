@@ -5,11 +5,12 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "cloudly"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{CloudApp API wrapper for Ruby, using HTTParty with an ActiveResource-like interface}
+    gem.description = %Q{CloudApp API wrapper for Ruby, using HTTParty with an ActiveResource-like interface}
     gem.email = "aaron@gc4.co.uk"
     gem.homepage = "http://github.com/aaronrussell/cloudly"
     gem.authors = ["Aaron Russell"]
+    gem.add_dependency "httparty", ">= 0.5.2"
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
