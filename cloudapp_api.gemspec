@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
      "README.md",
      "Rakefile",
      "VERSION",
+     "cloudapp_api.gemspec",
      "lib/cloudapp/base.rb",
      "lib/cloudapp/client.rb",
      "lib/cloudapp/httparty.rb",
