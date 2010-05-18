@@ -21,7 +21,7 @@ module CloudApp
     end
   
     def bookmark(url, name = "")
-      Item.create(:bookmark, :item => {:name => name, :redirect_url => url})
+      Item.create(:bookmark, {:name => name, :redirect_url => url})
     end
     
     def upload(file)
