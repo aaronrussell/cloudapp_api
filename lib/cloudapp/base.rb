@@ -33,10 +33,10 @@ module CloudApp
       case kind
       when :bookmark
         res = post "/items", {:query => {:item => opts}, :digest_auth => @@auth}
-      when :file
+      when :upload
         res = get "/items/new", :digest_auth => @@auth
         return res unless res.ok?
-        res = post res['url'], Multipart.new(res['params'].merge!(:file => File.new(opts[:path]))).payload.merge!(:digest_auth => @@auth)
+        res = post res['url'], Multipart.new(res['params'].merge!(:file => File.new(opts[:file]))).payload.merge!(:digest_auth => @@auth)
       else
         return false
       end
@@ -48,9 +48,11 @@ module CloudApp
     end
     
     def delete
-      res = self.class.delete self.href
+      res = self.class.delete self.href, :digest_auth => @@auth
       res.ok? ? true : res
     end
+    
+    private
     
     def load(attributes = {})
       attributes.each do |key, val|

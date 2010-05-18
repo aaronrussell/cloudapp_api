@@ -6,7 +6,7 @@ end
 
 module CloudApp
   
-  VERSION = "0.0.1"
+  VERSION = "0.0.2"
   
   def CloudApp.authenticate(username, password)
     Base.authenticate(username, password)

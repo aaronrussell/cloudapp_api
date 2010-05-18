@@ -2,11 +2,8 @@
 
 A simple Ruby wrapper for the [CloudApp API](http://support.getcloudapp.com/faqs/developers/api). Uses [HTTParty](http://github.com/jnunemaker/httparty) with a simple ActiveResource-like interface.
 
-Note: This is functional, but very much a work in progress.
-
 ## TODO
 
-* Get file uploads working
 * Add tests
 * Improve the docs
 
@@ -67,13 +64,11 @@ If you are using the client interface, you must create a client instance.
     
 ### Upload a file
 
-NOTE! This is not working yet
-
     @item = client.upload file_name
     
     # or ..
     
-    @item = CloudApp::Item.create :file, {:path => file_name}
+    @item = CloudApp::Item.create :upload, {:file => file_name}
     
 ### Delete an item
 
