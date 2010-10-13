@@ -7,7 +7,7 @@ require 'yaml'
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
-#require 'cloudly'
+require 'cloudapp_api'
 
 class Test::Unit::TestCase
   def thor_helper
