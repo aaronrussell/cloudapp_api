@@ -1,0 +1,3 @@
+cloudapp :
+    email : nobody@example.com
+    password : secret
