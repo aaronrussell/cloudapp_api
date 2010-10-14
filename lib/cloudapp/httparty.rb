@@ -9,11 +9,6 @@ module HTTParty
     def ok?
       self.code == 200
     end
-    
-#    def delete
-#      res = ::CloudApp::Base.delete self['url']
-#      res.ok? ? true : res
-#    end
   end
   
   class Request
