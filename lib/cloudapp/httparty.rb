@@ -7,8 +7,13 @@ end
 module HTTParty
   class Response < HTTParty::BasicObject
     def ok?
-      @code == 200
+      self.code == 200
     end
+    
+#    def delete
+#      res = ::CloudApp::Base.delete self['url']
+#      res.ok? ? true : res
+#    end
   end
   
   class Request

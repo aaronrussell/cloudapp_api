@@ -5,7 +5,9 @@ require 'thor'
 require 'treetop'
 require 'yaml'
 
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
+TEST_DIR = File.join(File.dirname(__FILE__))
+
+$LOAD_PATH.unshift(File.join(TEST_DIR, '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'cloudapp_api'
 
@@ -19,4 +21,10 @@ class Test::Unit::TestCase
   rescue Errno::ENOENT
     flunk "No test_config.yml file was found."
   end
+  
+  def client
+    @client ||= CloudApp::Client.new :username => cloudapp_config['email'],
+                                     :password => cloudapp_config['password']
+  end
+  
 end
