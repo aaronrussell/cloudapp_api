@@ -14,7 +14,7 @@ class TestCloudAppAPI < Test::Unit::TestCase
   end
   
   should "test creating a bookmark" do
-    unless client.bookmark("CloudApp","http://cloudapp.com").class == Item
+    unless client.bookmark("CloudApp","http://cloudapp.com").class == ::CloudApp::Item
       flunk "Failed to create a bookmark."
     end
   end
