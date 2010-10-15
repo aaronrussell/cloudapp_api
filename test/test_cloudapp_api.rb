@@ -24,7 +24,7 @@ class TestCloudAppAPI < Test::Unit::TestCase
     flunk "Couldn't delete an item" unless res === true
     
     res = client.delete "rAnD"
-    flunk "Shouldn't be a to delete the same item" if !res.respond_to?(:code) && res.code != 404
+    flunk "Shouldn't be able to delete the same item" if !res.respond_to?(:code) && res.code != 404
   end
 
 end
