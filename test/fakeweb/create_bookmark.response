@@ -1,0 +1,12 @@
+HTTP/1.1 200 OK
+Server: nginx/0.7.67
+Date: Fri, 15 Oct 2010 16:19:01 GMT
+Content-Type: application/json; charset=utf-8
+Connection: keep-alive
+ETag: "7a83a5575b6bafcde9353e91573a234b"
+X-Runtime: 15
+Content-Length: 473
+Set-Cookie: user_credentials=94c9e1cd6914a9cb149450be547b75980c4eb48d7999f943b3675c0b7eb5074b8f420c747beab8f9986c3edcf74268879f28c6318c816be4002a9bfd8266e1aa%3A%3A28100; path=/
+Cache-Control: private, max-age=0, must-revalidate
+
+{"href":"http://my.cl.ly/items/1808640","content_url":"http://cl.ly/2qLh/content","name":"CloudApp","redirect_url":"http://cloudapp.com","created_at":"2010-10-15T16:19:01Z","updated_at":"2010-10-15T16:19:01Z","public_slug":"2qLh","private":false,"deleted_at":null,"url":"http://cl.ly/2qLh","view_counter":0,"remote_url":null,"last_viewed":null,"icon":"http://my.cl.ly/images/item_types/bookmark.png","owner_id":831030,"id":1808640,"private_slug":null,"item_type":"bookmark"}
