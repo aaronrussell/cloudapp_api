@@ -30,7 +30,7 @@ module CloudApp
   
     def delete(id)
       item = Item.find(id)
-      item.class == Item ? item.delete : false
+      item.class == Item ? item.delete : item
     end
         
   end
