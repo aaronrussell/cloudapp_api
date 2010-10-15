@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+Server: nginx/0.7.67
+Date: Fri, 15 Oct 2010 19:03:36 GMT
+Content-Type: application/json; charset=utf-8
+Connection: keep-alive
+Last-Modified: Fri, 15 Oct 2010 18:56:11 GMT
+X-Runtime: 7
+Cache-Control: private, max-age=0, must-revalidate
+Content-Length: 473
+X-Varnish: 1568189306
+Age: 0
+Via: 1.1 varnish
+
+{"href":"http://my.cl.ly/items/1234","content_url":"http://cl.ly/rAnD/content","name":"CloudApp","redirect_url":"http://cloudapp.com","created_at":"2010-10-15T17:01:33Z","updated_at":"2010-10-15T18:56:11Z","public_slug":"rAnD","private":false,"deleted_at":null,"url":"http://cl.ly/rAnD","view_counter":0,"remote_url":null,"last_viewed":null,"icon":"http://my.cl.ly/images/item_types/bookmark.png","owner_id":28100,"id":1234,"private_slug":null,"item_type":"bookmark"}

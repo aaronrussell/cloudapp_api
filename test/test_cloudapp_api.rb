@@ -18,5 +18,13 @@ class TestCloudAppAPI < Test::Unit::TestCase
       flunk "Failed to create a bookmark."
     end
   end
+  
+  should "be able to delete an item" do
+    res = client.delete "rAnD"
+    flunk "Couldn't delete an item" unless res === true
+    
+    res = client.delete "rAnD"
+    flunk "Shouldn't be a to delete the same item" if !res.respond_to?(:code) && res.code != 404
+  end
 
 end
