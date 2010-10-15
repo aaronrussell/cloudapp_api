@@ -14,14 +14,11 @@ require 'cloudapp_api'
 class Test::Unit::TestCase
   
   def cloudapp_config
-    @cloudapp_config ||= YAML.load_file('test/test_config.yml')['cloudapp']
-  rescue Errno::ENOENT
-    flunk "No test_config.yml file was found."
+    @@cloudapp_config ||= {:username=> 'fake@example.com', :password=>'foobar'}
   end
   
   def client
-    @client ||= CloudApp::Client.new :username => cloudapp_config['email'],
-                                     :password => cloudapp_config['password']
+    @@client ||= CloudApp::Client.new cloudapp_config
   end
   
 end
