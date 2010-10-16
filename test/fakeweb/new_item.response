@@ -1,0 +1,15 @@
+HTTP/1.1 200 OK
+Server: nginx/0.7.67
+Date: Sat, 16 Oct 2010 02:46:43 GMT
+Content-Type: application/json; charset=utf-8
+Connection: keep-alive
+ETag: "c608e1b58fc8d24e159eac2099549cf6"
+X-Runtime: 10
+Set-Cookie: user_credentials=94c9e1cd6914a9cb149450be547b75980c4eb48d7999f943b3675c0b7eb5074b8f420c747beab8f9986c3edcf74268879f28c6318c816be4002a9bfd8266e1aa%3A%3A28100; path=/
+Cache-Control: private, max-age=0, must-revalidate
+Content-Length: 619
+X-Varnish: 2507033709
+Age: 0
+Via: 1.1 varnish
+
+{"max_upload_size":26214400,"url":"http://f.cl.ly","params":{"success_action_redirect":"http://my.cl.ly/items/s3","acl":"public-read","AWSAccessKeyId":"AKIAIDPUZISHSBEOFS6Q","key":"items/dcb0aa15ccc4450478f0/${filename}","signature":"Cm5S8VMsE9pw04heVXqRqpYj6sE=","policy":"eyJleHBpcmF0aW9uIjoiMjAxMC0xMC0xNlQwMzowMTo0M1oiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJmLmNsLmx5In0seyJhY2wiOiJwdWJsaWMtcmVhZCJ9LHsic3VjY2Vzc19hY3Rpb25fcmVkaXJlY3QiOiJodHRwOi8vbXkuY2wubHkvaXRlbXMvczMifSxbImNvbnRlbnQtbGVuZ3RoLXJhbmdlIiwwLDI2MjE0NDAwXSxbInN0YXJ0cy13aXRoIiwiJGtleSIsIml0ZW1zL2RjYjBhYTE1Y2NjNDQ1MDQ3OGYwLyJdXX0="},"uploads_remaining":7}

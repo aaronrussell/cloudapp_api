@@ -26,5 +26,14 @@ class TestCloudAppAPI < Test::Unit::TestCase
     res = client.delete "rAnD"
     flunk "Shouldn't be able to delete the same item" if !res.respond_to?(:code) && res.code != 404
   end
+  
+  should "be able to upload a file" do
+    begin
+      res = client.upload 'README.md'
+      flunk "Couldn't upload the file" unless res.class == ::CloudApp::Item
+    end
+  end
+
+  
 
 end
