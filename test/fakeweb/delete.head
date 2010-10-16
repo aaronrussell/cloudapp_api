@@ -1,8 +1,0 @@
-HTTP/1.1 200 OK
-Server: nginx/0.7.67
-Date: Fri, 15 Oct 2010 18:32:38 GMT
-Content-Type: application/json; charset=utf-8
-Connection: keep-alive
-X-Runtime: 75
-Content-Length: 1
-Cache-Control: private, max-age=0, must-revalidate

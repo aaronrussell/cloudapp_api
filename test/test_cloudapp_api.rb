@@ -34,6 +34,6 @@ class TestCloudAppAPI < Test::Unit::TestCase
     end
   end
 
-  
+  ### Can't think of any other test to add at the moment
 
 end
