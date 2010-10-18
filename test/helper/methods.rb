@@ -1,9 +1,13 @@
 require 'json'
 require 'json/add/rails'
 
+def slug_character
+  characters = ('A'..'Z').to_a + ('a'..'z').to_a + ('0'..'9').to_a
+  characters[ rand(characters.size) ]
+end
+
 def random_slug
-  slugs = ['3yH9', '4p3K', '2pEF']
-  slugs[ rand(slugs.size) ]
+  slug_character + slug_character + slug_character + slug_character
 end
 
 def build_item( params = {} )
