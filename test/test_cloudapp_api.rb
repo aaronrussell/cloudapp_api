@@ -23,14 +23,13 @@ class TestCloudAppAPI < Test::Unit::TestCase
     bad_res = client.delete "rAnD"
     message = "Shouldn't be able to delete the same item"
     assert_not_same true, bad_res, message
+    # HTTParty::Response has no instance_of? method so
+    # we can't use assert_instance_of
     assert bad_res.class == HTTParty::Response, message
-    # the above test passed, but the following wouldn't
-    # assert_instance_of HTTParty::Response, bad_res
-    # kept saying bad_res was nil.  Could this be a bug?
   end
   
   should "be able to upload a file" do
-    res = client.upload 'README.md'
+    res = client.upload "README.md"
     assert_instance_of CloudApp::Item, res, "Couldn't upload the file"
   end
 
