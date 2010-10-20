@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Aaron Russell"]
-  s.date = %q{2010-10-18}
+  s.date = %q{2010-10-19}
   s.description = %q{A simple Ruby wrapper for the CloudApp API. Uses HTTParty with a simple ActiveResource-like interface.}
   s.email = %q{aaron@gc4.co.uk}
   s.extra_rdoc_files = [
@@ -33,9 +33,7 @@ Gem::Specification.new do |s|
      "lib/cloudapp_api.rb",
      "test/helper.rb",
      "test/helper/methods.rb",
-     "test/setup_faking.rb",
-     "test/test_cloudapp_api.rb",
-     "test/test_config.sample.yml"
+     "test/test_cloudapp_api.rb"
   ]
   s.homepage = %q{http://github.com/aaronrussell/cloud_app}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -43,9 +41,10 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{A simple Ruby wrapper for the CloudApp API. Uses HTTParty with a simple ActiveResource-like interface.}
   s.test_files = [
-    "test/helper/methods.rb",
+    "test/helper/faking_setup.rb",
+     "test/helper/methods.rb",
      "test/helper.rb",
-     "test/setup_faking.rb",
+     "test/test_base.rb",
      "test/test_cloudapp_api.rb"
   ]
 
