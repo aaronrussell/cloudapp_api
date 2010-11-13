@@ -87,9 +87,10 @@ If you are using the client interface, you must create a client instance.
   (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
 
-## Author
+## Author & Contributors
 
 * [Aaron Russell](http://www.aaronrussell.co.uk)
+* [Wade West](http://github.com/wadewest)
 
 ## Copyright
 

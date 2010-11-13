@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.version = "0.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Aaron Russell"]
+  s.authors = ["Aaron Russell", "Wade West"]
   s.date = %q{2010-11-13}
   s.description = %q{A simple Ruby wrapper for the CloudApp API. Uses HTTParty with a simple ActiveResource-like interface.}
   s.email = %q{aaron@gc4.co.uk}
