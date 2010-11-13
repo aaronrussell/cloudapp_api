@@ -1,9 +1,0 @@
-HTTP/1.1 200 OK
-Server: nginx/0.7.67
-Date: Fri, 15 Oct 2010 18:32:38 GMT
-Content-Type: application/json; charset=utf-8
-Connection: keep-alive
-X-Runtime: 75
-Content-Length: 1
-Set-Cookie: user_credentials=94c9e1cd6914a9cb149450be547b75980c4eb48d7999f943b3675c0b7eb5074b8f420c747beab8f9986c3edcf74268879f28c6318c816be4002a9bfd8266e1aa%3A%3A28100; path=/
-Cache-Control: private, max-age=0, must-revalidate

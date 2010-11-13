@@ -8,7 +8,7 @@ TEST_DIR = File.join(File.dirname(__FILE__))
 
 $LOAD_PATH.unshift(File.join(TEST_DIR, '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
-require 'setup_faking'
+require 'helper/faking_setup'
 require 'cloudapp_api'
 
 class Test::Unit::TestCase

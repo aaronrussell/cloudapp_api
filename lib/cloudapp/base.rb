@@ -24,8 +24,9 @@ module CloudApp
       res.ok? ? Item.new(res) : res
     end
     
-    def self.all(opts = {})
-      res = get "/items", opts.merge!(:digest_auth => @@auth)
+    def self.all(opts = nil)
+      opts = opts.nil? ? "" : "?#{opts.to_params}"
+      res = get "/items#{opts}", :digest_auth => @@auth
       res.ok? ? res.collect{|i| Item.new(i)} : res
     end
     

@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Aaron Russell"]
-  s.date = %q{2010-05-18}
+  s.date = %q{2010-10-19}
   s.description = %q{A simple Ruby wrapper for the CloudApp API. Uses HTTParty with a simple ActiveResource-like interface.}
   s.email = %q{aaron@gc4.co.uk}
   s.extra_rdoc_files = [
@@ -32,23 +32,27 @@ Gem::Specification.new do |s|
      "lib/cloudapp/multipart.rb",
      "lib/cloudapp_api.rb",
      "test/helper.rb",
-     "test/test_cloudly.rb"
+     "test/helper/methods.rb",
+     "test/test_cloudapp_api.rb"
   ]
   s.homepage = %q{http://github.com/aaronrussell/cloud_app}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.6}
+  s.rubygems_version = %q{1.3.7}
   s.summary = %q{A simple Ruby wrapper for the CloudApp API. Uses HTTParty with a simple ActiveResource-like interface.}
   s.test_files = [
-    "test/helper.rb",
-     "test/test_cloudly.rb"
+    "test/helper/faking_setup.rb",
+     "test/helper/methods.rb",
+     "test/helper.rb",
+     "test/test_base.rb",
+     "test/test_cloudapp_api.rb"
   ]
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<httparty>, [">= 0.5.2"])
       s.add_development_dependency(%q<thoughtbot-shoulda>, [">= 0"])
     else
