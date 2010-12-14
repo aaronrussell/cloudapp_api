@@ -7,6 +7,7 @@ gem "mime-types"
 # Include everything needed to run rake, tests, features, etc.
 group :development do
   gem "rspec", "~> 2.1.0"
+  gem "fakeweb"
   gem "yard", "~> 0.6.0"
   gem "cucumber", ">= 0"
   gem "bundler", "~> 1.0.0"
