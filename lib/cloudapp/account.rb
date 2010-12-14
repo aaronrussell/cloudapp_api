@@ -1,5 +1,48 @@
 module CloudApp
   
+  # An ActiveResource-like interface through which to interract with the CloudApp API.
+  #
+  # @example Create a CloudApp account
+  #   CloudApp::Account.create :email => "arthur@dent.com", :password => "towel"
+  #
+  # @example Most other account actions require authentication first
+  #   CloudApp.authenticate "username", "password"
+  #
+  # @example Usage via the Account class
+  #   # View account details
+  #   item = CloudApp::Account.find
+  #   
+  #   # Change default security
+  #   CloudApp::Account.update :private_items => false
+  #   
+  #   # Change email
+  #   CloudApp::Account.update :email => "ford@prefect.com", :current_password => "towel"
+  #   
+  #   # Change password
+  #   CloudApp::Account.update :password => "happy frood", :current_password => "towel"
+  #   
+  #   # Set custom domain
+  #   CloudApp::Account.update :domain => "dent.com", :domain_home_page => "http://hhgproject.org"
+  #   
+  #   # Forgot password
+  #   CloudApp::Account.reset :email => "arthur@dent.com"
+  #
+  # @example Usage via the class instance
+  #   # Change default security
+  #   @account.update :private_items => false
+  #   
+  #   # Change email
+  #   @account.update :email => "ford@prefect.com", :current_password => "towel"
+  #   
+  #   # Change password
+  #   @account.update :password => "happy frood", :current_password => "towel"
+  #   
+  #   # Set custom domain
+  #   @account.update :domain => "dent.com", :domain_home_page => "http://hhgproject.org"
+  #   
+  #   # Forgot password
+  #   @account.reset
+  #
   class Account < Base
     
     # Get the basic details of the authenticated account.
