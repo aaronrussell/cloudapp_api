@@ -1,6 +1,6 @@
 require "httparty"
 
-["base", "item", "client", "multipart", "httparty"].each do |inc|
+["base", "item", "user", "client", "multipart", "httparty"].each do |inc|
   require File.join(File.dirname(__FILE__), "cloudapp", inc)
 end
 

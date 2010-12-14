@@ -10,6 +10,7 @@ def fake_it_all
   FakeWeb.clean_registry
   FakeWeb.register_uri :head, %r{http://(my.|f.)?cl.ly(/items)?}, :status => ["200", "OK"]
   FakeWeb.register_uri :post, 'http://f.cl.ly', :status => ["303"], :location => "http://my.cl.ly/items/s3"
+  FakeWeb.register_uri :post, 'http://my.cl.ly/reset', :status => ["200", "OK"]
   {
     # GET URLs
     :get => {
@@ -22,7 +23,6 @@ def fake_it_all
     # POST URLs
     :post => {
       %r{http://my.cl.ly/items}   => File.join('item', 'create'),
-      'http://my.cl.ly/reset'     => File.join('account', 'reset'),
       'http://my.cl.ly/register'  => File.join('account', 'create')
     },
     # PUT URLs
