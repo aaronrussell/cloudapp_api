@@ -10,7 +10,7 @@ begin
     gem.email = "aaron@gc4.co.uk"
     gem.homepage = "http://github.com/aaronrussell/cloud_app"
     gem.authors = ["Aaron Russell", "Wade West"]
-    gem.add_dependency "httparty", ">= 0.5.2"
+    gem.add_dependency "httparty", ">= 0.6.0"
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
