@@ -1,5 +1,42 @@
 module CloudApp
   
+  # An ActiveResource-like interface through which to interract with the CloudApp API.
+  #
+  # @example Gets started by Authenticating
+  #   CloudApp.authenticate "username", "password"
+  #
+  # @example Usage via the Item class
+  #   # Find a single item by it's slug
+  #   item = Item.find "2wr4"
+  #   
+  #   # Get a list of all items
+  #   items = Item.all
+  #   
+  #   # Create a new bookmark
+  #   item = Item.create :bookmark, :name => "CloudApp", :redirect_url => "http://getcloudapp.com"
+  #   
+  #   # Upload a file
+  #   item = Item.create :upload, :file => "/path/to/image.png"
+  #   
+  #   # Rename a file
+  #   Item.update "http://my.cl.ly/items/1912565", :name => "Big Screenshot"
+  #   
+  #   # Set an items privacy
+  #   Item.update "http://my.cl.ly/items/1912565", :private => true
+  #   
+  #   # Delete an item
+  #   Item.delete "http://my.cl.ly/items/1912565"
+  #
+  # @example Usage via the class instance
+  #   # Rename a file
+  #   @item.update :name => "Big Screenshot"
+  #   
+  #   # Set an items privacy
+  #   @item.update :private => true
+  #   
+  #   # Delete an item
+  #   @tem.delete
+  #
   class Item < Base
     
     # Get metadata about a cl.ly URL like name, type, or view count.
@@ -30,9 +67,9 @@ module CloudApp
     #   :upload           # Upload file
     # Depending on the type of item, a parameter hash is required.
     # @example Options for a bookmark
-    #   { :name => "Google", :redirect_url => "http://www.google.com" }
+    #   { :name => "CloudApp", :redirect_url => "http://getcloudapp.com" }
     # @example Options for a file upload
-    #   { :file => "my_upload.txt" }
+    #   { :file => "/path/to/image.png" }
     # Requires authentication.
     # @param [Symbol] type of cl.ly item
     # @param [Hash] item parameters
@@ -54,7 +91,7 @@ module CloudApp
     
     # Modify a cl.ly item. Can currently modify it's name or security setting by passing parameters.
     # @example Options for renaming
-    #   { :name => "Google" }
+    #   { :name => "CloudApp" }
     # @example Options for modifying privacy
     #   { :privacy => true }
     # Requires authentication.
@@ -88,7 +125,7 @@ module CloudApp
     
     # Modify the cl.ly item. Can currently modify it's name or security setting by passing parameters.
     # @example Options for renaming
-    #   { :name => "Google" }
+    #   { :name => "CloudApp" }
     # @example Options for modifying privacy
     #   { :privacy => true }
     # Requires authentication.
