@@ -110,7 +110,7 @@ describe "Delete an item" do
   before(:each) do
     fake_it_all
     CloudApp.authenticate "testuser@test.com", "password"
-    @item = CloudApp::Item.delete "http://cl.ly/items/2wt6"
+    @item = CloudApp::Item.delete "http://my.cl.ly/items/1912565"
   end
   
   it "should be an Item object" do

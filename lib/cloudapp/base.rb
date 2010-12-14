@@ -15,7 +15,7 @@ module CloudApp
     headers HEADERS
     format :json
     
-    # Sets the authentication credentials in a class variable
+    # Sets the authentication credentials in a class variable.
     # @param [String] cl.ly username
     # @param [String] cl.ly password
     # @return [Hash] authentication credentials

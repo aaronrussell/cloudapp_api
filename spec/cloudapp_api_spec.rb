@@ -10,7 +10,7 @@ describe CloudApp do
   
   it "should be authenticatable" do
     auth = {
-      :username => "test@test.com",
+      :username => "testuser@test.com",
       :password => "password"
     }
     CloudApp.authenticate(auth[:username], auth[:password]).should == auth
