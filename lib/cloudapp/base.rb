@@ -2,12 +2,14 @@ require "httparty"
 
 module CloudApp
   
+  # Globally set request headers
   HEADERS = {
-    "User-Agent" => "Ruby.CloudApp.API",
-    "Accept" => "application/json",
-    "Content-Type" => "application/json"
+    "User-Agent"    => "Ruby.CloudApp.API",
+    "Accept"        => "application/json",
+    "Content-Type"  => "application/json"
   }
-      
+  
+  # Base class for setting HTTParty configurations globally
   class Base
     
     include HTTParty

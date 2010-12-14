@@ -1,14 +1,14 @@
 require "json"
 
-module HTTParty
+module HTTParty #:nodoc:
   
-  class Response < HTTParty::BasicObject
+  class Response < HTTParty::BasicObject #:nodoc:
     def ok?
       self.code == 200
     end
   end
   
-  class Request
+  class Request #:nodoc:
     
     private
     

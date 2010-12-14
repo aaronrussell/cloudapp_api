@@ -2,7 +2,8 @@ require "mime/types"
 
 module CloudApp
   
-  class Multipart
+  # TODO - Document the Multipart Class
+  class Multipart #:nodoc:
     
     EOL = "\r\n"
     

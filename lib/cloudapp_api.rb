@@ -4,8 +4,12 @@ require "httparty"
   require File.join(File.dirname(__FILE__), "cloudapp", inc)
 end
 
+# A simple Ruby wrapper for the CloudApp API. Uses HTTParty and provides
+# two alternative interfaces for interracting with the API.
+# An ActiveResource-like interface is provided alongside a simple client interface.
 module CloudApp
   
+  # Version number
   VERSION = "0.1.0"
   
   # Sets the authentication credentials in a class variable
