@@ -107,7 +107,6 @@ describe "Reset password" do
   
   before(:each) do
     fake_it_all
-    CloudApp.authenticate "testuser@test.com", "password"
     @response = CloudApp::Account.reset :email => "arthur@dent.com"
   end
   

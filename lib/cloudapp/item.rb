@@ -118,7 +118,7 @@ module CloudApp
     # Create a new CloudApp::Item object.
     # Only used internally
     # @param [Hash] attributes
-    # @param [CloudApp::Item] self
+    # @param [CloudApp::Item]
     def initialize(attributes = {})
       load(attributes)
     end
