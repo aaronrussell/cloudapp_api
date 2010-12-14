@@ -4,7 +4,7 @@ module HTTParty #:nodoc:
   
   class Response < HTTParty::BasicObject #:nodoc:
     def ok?
-      self.code == 200
+      [200, 201, 202].include?(self.code)
     end
   end
   

@@ -10,7 +10,7 @@ module CloudApp
   #
   # @example Usage via the Account class
   #   # View account details
-  #   item = CloudApp::Account.find
+  #   @account = CloudApp::Account.find
   #   
   #   # Change default security
   #   CloudApp::Account.update :private_items => false

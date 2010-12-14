@@ -5,7 +5,7 @@ module CloudApp
   # TODO - Document the Multipart Class
   class Multipart #:nodoc:
     
-    EOL = "\r\n"
+    EOL = "\r\n" #:nodoc:
     
     def initialize(params)
       @params = params
@@ -20,28 +20,28 @@ module CloudApp
       @body += EOL + bound + "--#{EOL}"
     end
     
-    def payload
+    def payload #:nodoc:
       {
         :headers => {"Content-Type" => "multipart/form-data; boundary=#{boundary}"},
         :body => @body
       }
     end
     
-    def boundary
+    def boundary #:nodoc:
       @boundary ||= "#{HEADERS["User-Agent"]}.#{Array.new(16/2) { rand(256) }.pack("C*").unpack("H*").first}"
     end
     
-    def create_regular_field(key, val)
+    def create_regular_field(key, val) #:nodoc:
       %Q{Content-Disposition: form-data; name="#{key}"} + EOL + EOL + val
     end
     
-    def create_file_field(file)
+    def create_file_field(file) #:nodoc:
       %Q{Content-Disposition: form-data; name="file"; filename="#{File.basename(file.path)}"} + EOL +
         "Content-Type: #{mime_for(file.path)}" + EOL + EOL +
         file.read 
     end
     
-    def mime_for(path)
+    def mime_for(path) #:nodoc:
       (MIME::Types.type_for(path)[0] || MIME::Types["application/octet-stream"][0]).simplified
     end
     

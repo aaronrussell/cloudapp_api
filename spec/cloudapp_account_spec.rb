@@ -8,7 +8,7 @@ describe CloudApp::Account do
     @account = CloudApp::Account.find
   end
   
-  it "should be a User object" do
+  it "should be a Account object" do
     @account.should be_a_kind_of CloudApp::Account
   end
   
@@ -57,7 +57,7 @@ describe "Change default security" do
     @account = CloudApp::Account.update :private_items => false
   end
   
-  it "should be a User object" do
+  it "should be a Account object" do
     @account.should be_a_kind_of CloudApp::Account
   end
   
@@ -77,7 +77,7 @@ describe "Change email" do
     @account = CloudApp::Account.update :email => @email, :current_password => "towel"
   end
   
-  it "should be a User object" do
+  it "should be a Account object" do
     @account.should be_a_kind_of CloudApp::Account
   end
   
@@ -96,7 +96,7 @@ describe "Change password" do
     @account = CloudApp::Account.update :password => "hoopy frood", :current_password => "towel"
   end
   
-  it "should be a User object" do
+  it "should be a Account object" do
     @account.should be_a_kind_of CloudApp::Account
   end
   
@@ -117,7 +117,7 @@ describe "Reset password" do
 end
 
 
-describe "Register user" do
+describe "Register account" do
   
   before(:each) do
     fake_it_all
@@ -125,7 +125,7 @@ describe "Register user" do
     @account = CloudApp::Account.create :email => @email, :current_password => "towel"
   end
   
-  it "should be a User object" do
+  it "should be a Account object" do
     @account.should be_a_kind_of CloudApp::Account
   end
   
@@ -146,7 +146,7 @@ describe "Set custom domain" do
     @account = CloudApp::Account.update :domain => @domain, :domain_home_page => @dhp
   end
   
-  it "should be a User object" do
+  it "should be a Account object" do
     @account.should be_a_kind_of CloudApp::Account
   end
   

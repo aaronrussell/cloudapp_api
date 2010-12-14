@@ -2,10 +2,9 @@
 
 A simple Ruby wrapper for the [CloudApp API](http://support.getcloudapp.com/faqs/developers/api). Uses [HTTParty](http://github.com/jnunemaker/httparty) with a simple ActiveResource-like interface.
 
-## TODO
+Two interfaces are provided for interacting with the CloudApp API. The first is a ActiveResource-like interface, directly calling methods on the Item and Account class. The second option is to interact through a Client interface.
 
-* Add tests
-* Improve the docs
+* [Familiarise yourself with the documentation](http://rubydoc.info/github/aaronrussell/cloudapp_api/)
 
 ## Installation
 
@@ -13,70 +12,101 @@ To install as a Gem:
 
     sudo gem install cloudapp_api
 
-## Usage
+## Authentication
 
-### Authentication
-
-Authentication isn't necessary if you are just attempting to find an individual item. However, if you are trying to create, delete or list all items, you must authenticate.
+Authentication is necessary for most actions, the only exceptions being when creating a new Account or querying a specific Item.
 
     CloudApp.authenticate "email@address.com", "password"
 
-### Initialize client interface
+## Item examples
 
-If you are using the client interface, you must create a client instance.
+* Documentation - {CloudApp::Item}
 
-    # Optionally you can pass a hash containing :username and :password to authenticate.
-    
-    client = CloudApp::Client.new opts
+### Usage via the Item class
+    # Find a single item by it's slug
+    item = CloudApp::Item.find "2wr4"
+  
+    # Get a list of all items
+    items = CloudApp::Item.all
+  
+    # Create a new bookmark
+    item = CloudApp::Item.create :bookmark, :name => "CloudApp", :redirect_url => "http://getcloudapp.com"
+  
+    # Upload a file
+    item = CloudApp::Item.create :upload, :file => "/path/to/image.png"
+  
+    # Rename a file
+    CloudApp::Item.update "http://my.cl.ly/items/1912565", :name => "Big Screenshot"
+  
+    # Set an items privacy
+    CloudApp::Item.update "http://my.cl.ly/items/1912565", :private => true
+  
+    # Delete an item
+    CloudApp::Item.delete "http://my.cl.ly/items/1912565"
 
-### View an item by short URL
+### Usage via an Item instance
+    # Rename a file
+    @item.update :name => "Big Screenshot"
+  
+    # Set an items privacy
+    @item.update :private => true
+  
+    # Delete an item
+    @tem.delete
 
-    short_url = "19xM"
-    
-    @item = client.item short_url
-    
-    # or ..
-    
-    @item = CloudApp::Item.find short_url
+### Usage via a Client instance
 
-### List items
-    
-    # Allowed params
-    #   :page => 1        # page number starting at 1
-    #   :per_page => 5    # number of items per page
-    #   :type => "image"  # filter items by type
-    #                       (image, bookmark, text, archive, audio, video, or unknown)
-    #   :deleted => true  # show trashed items
-    
-    @items = client.items params
-    
-    # or ..
-    
-    @items = CloudApp::Item.all params
+* Documentation - {CloudApp::Client}
 
-### Create a bookmark
+    # Create a Client instance
+    @client = CloudApp::Client.new
+    
+    # Find a single item by it's slug
+    item = @client.item "2wr4"
+    
+    # Get a list of all items
+    items = @client.all
+    
+    # Create a new bookmark
+    item = @client.bookmark "http://getcloudapp.com", "CloudApp"
+    
+    # Upload a file
+    item = @client.upload "/path/to/image.png"
+    
+    # Rename a file
+    @client.rename "2wr4", "Big Screenshot"
+    
+    # Set an items privacy
+    @client.privacy "2wr4", true
+    
+    # Delete an item
+    @client.delete "2wr4"
 
-    @item = client.bookmark url, name
-    
-    # or ..
-    
-    @item = CloudApp::Item.create :bookmark, {:name => name, :redirect_url => url}
-    
-### Upload a file
+## Account examples
 
-    @item = client.upload file_name
-    
-    # or ..
-    
-    @item = CloudApp::Item.create :upload, {:file => file_name}
-    
-### Delete an item
+* Documentation - {CloudApp::Account}
 
-    client.delete short_url
+    # Create a CloudApp account
+    @account = CloudApp::Account.create :email => "arthur@dent.com", :password => "towel"
     
-    # or ..
+    # Forgot password
+    CloudApp::Account.reset :email => "arthur@dent.com"
     
-    @item.delete
+    # View details of authenticated account
+    @account = CloudApp::Account.find
+    
+    # Change default security
+    @account.update :private_items => false
+    
+    # Change email
+    @account.update :email => "ford@prefect.com", :current_password => "towel"
+    
+    # Change password
+    @account.update :password => "happy frood", :current_password => "towel"
+    
+    # Set custom domain
+    @account.update :domain => "dent.com", :domain_home_page => "http://hhgproject.org"
+    
 
 ## Note on Patches/Pull Requests
  
@@ -90,7 +120,6 @@ If you are using the client interface, you must create a client instance.
 ## Author & Contributors
 
 * [Aaron Russell](http://www.aaronrussell.co.uk)
-* [Wade West](http://github.com/wadewest)
 
 ## Copyright
 

@@ -7,25 +7,25 @@ module CloudApp
   #
   # @example Usage via the Item class
   #   # Find a single item by it's slug
-  #   item = Item.find "2wr4"
+  #   item = CloudApp::Item.find "2wr4"
   #   
   #   # Get a list of all items
-  #   items = Item.all
+  #   items = CloudApp::Item.all
   #   
   #   # Create a new bookmark
-  #   item = Item.create :bookmark, :name => "CloudApp", :redirect_url => "http://getcloudapp.com"
+  #   item = CloudApp::Item.create :bookmark, :name => "CloudApp", :redirect_url => "http://getcloudapp.com"
   #   
   #   # Upload a file
-  #   item = Item.create :upload, :file => "/path/to/image.png"
+  #   item = CloudApp::Item.create :upload, :file => "/path/to/image.png"
   #   
   #   # Rename a file
-  #   Item.update "http://my.cl.ly/items/1912565", :name => "Big Screenshot"
+  #   CloudApp::Item.update "http://my.cl.ly/items/1912565", :name => "Big Screenshot"
   #   
   #   # Set an items privacy
-  #   Item.update "http://my.cl.ly/items/1912565", :private => true
+  #   CloudApp::Item.update "http://my.cl.ly/items/1912565", :private => true
   #   
   #   # Delete an item
-  #   Item.delete "http://my.cl.ly/items/1912565"
+  #   CloudApp::Item.delete "http://my.cl.ly/items/1912565"
   #
   # @example Usage via the class instance
   #   # Rename a file

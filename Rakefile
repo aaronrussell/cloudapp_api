@@ -22,7 +22,6 @@ Jeweler::Tasks.new do |gem|
   # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
   gem.add_runtime_dependency "httparty", ">= 0.6.0"
   gem.add_development_dependency "rspec", "~> 2.1.0"
-  gem.add_development_dependency "cucumber", ">= 0"
   gem.add_development_dependency "yard", "~> 0.6.0"
 end
 Jeweler::RubygemsDotOrgTasks.new
