@@ -84,14 +84,6 @@ module CloudApp
       self.class.reset :email => self.email
     end
     
-    private
-    
-    def load(attributes = {})
-      attributes.each do |key, val|
-        self.instance_variable_set("@#{key}", val)
-      end
-    end
-        
   end
   
 end

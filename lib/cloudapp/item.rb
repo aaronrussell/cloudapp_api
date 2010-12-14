@@ -141,16 +141,6 @@ module CloudApp
     def delete
       self.class.delete self.href
     end
-    
-    private
-    
-    # Sets the attributes for Item object.
-    # @param [Hash] attributes
-    def load(attributes = {})
-      attributes.each do |key, val|
-        self.instance_variable_set("@#{key}", val)
-      end
-    end
         
   end
   

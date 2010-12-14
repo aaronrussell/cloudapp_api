@@ -25,6 +25,16 @@ module CloudApp
       @@auth = {:username => username, :password => password}
     end
     
+    private
+    
+    # Sets the attributes for object.
+    # @param [Hash] attributes
+    def load(attributes = {})
+      attributes.each do |key, val|
+        self.instance_variable_set("@#{key}", val)
+      end
+    end
+    
   end  
   
 end
