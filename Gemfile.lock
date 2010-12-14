@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    bluecloth (2.0.9)
     builder (3.0.0)
     crack (0.1.8)
     cucumber (0.10.0)
@@ -40,6 +41,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bluecloth
   bundler (~> 1.0.0)
   cucumber
   fakeweb

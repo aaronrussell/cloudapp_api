@@ -14,10 +14,12 @@ tmtags
 *.swp
 
 ## PROJECT::GENERAL
+.autotest
+.yardoc
 coverage
+doc
 rdoc
 pkg
-.autotest
 
 ## PROJECT::SPECIFIC
 test/test_config.yml
