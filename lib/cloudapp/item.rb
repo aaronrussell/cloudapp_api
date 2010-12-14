@@ -39,7 +39,7 @@ module CloudApp
     def self.create(kind, opts = {})
       case kind
       when :bookmark
-        res = post "/items", {:query => {:item => opts}, :digest_auth => @@auth}
+        res = post "/items", {:body => {:item => opts}, :digest_auth => @@auth}
       when :upload
         res = get "/items/new", :digest_auth => @@auth
         return res unless res.ok?
@@ -61,7 +61,7 @@ module CloudApp
     # @param [Hash] item parameters
     # @return [CloudApp::Item] cl.ly item
     def self.update(href, opts = {})
-      res = put href, {:query => {:item => opts}, :digest_auth => @@auth}
+      res = put href, {:body => {:item => opts}, :digest_auth => @@auth}
       res.ok? ? Item.new(res) : res
     end
     
