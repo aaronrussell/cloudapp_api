@@ -22,6 +22,8 @@ Authentication is necessary for most actions, the only exceptions being when cre
 
 * Documentation - {CloudApp::Item}
 
+---
+
 ### Usage via the Item class
     # Find a single item by it's slug
     item = CloudApp::Item.find "2wr4"
@@ -54,9 +56,11 @@ Authentication is necessary for most actions, the only exceptions being when cre
     # Delete an item
     @tem.delete
 
-### Usage via a Client instance
+## Usage via a Client instance
 
 * Documentation - {CloudApp::Client}
+
+---
 
     # Create a Client instance
     @client = CloudApp::Client.new
@@ -85,6 +89,8 @@ Authentication is necessary for most actions, the only exceptions being when cre
 ## Account examples
 
 * Documentation - {CloudApp::Account}
+
+---
 
     # Create a CloudApp account
     @account = CloudApp::Account.create :email => "arthur@dent.com", :password => "towel"
