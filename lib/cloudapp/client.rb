@@ -54,6 +54,7 @@ module CloudApp
     end
     
     # Get metadata about a cl.ly URL like name, type, or view count.
+    #
     # Finds the item by it's slug id, for example "2wr4".
     #
     # @param [String] id cl.ly slug id
@@ -88,7 +89,9 @@ module CloudApp
     end
     
     # Create a new cl.ly item by uploading a file.
+    #
     # Requires authentication.
+    #
     # @param [String] file local path to file
     # @return [CloudApp::Item]
     def upload(file)
@@ -96,8 +99,11 @@ module CloudApp
     end
     
     # Change the name of an item.
+    #
     # Finds the item by it's slug id, for example "2wr4".
+    #
     # Requires authentication.
+    #
     # @param [String] id cl.ly item id
     # @param [String] name new item name
     # @return [CloudApp::Item]
@@ -107,8 +113,11 @@ module CloudApp
     end
     
     # Modify an item with a private URL to have a public URL or vice versa.
+    #
     # Finds the item by it's slug id, for example "2wr4".
+    #
     # Requires authentication.
+    #
     # @param [String] id cl.ly item id
     # @param [Boolean] privacy privacy setting
     # @return [CloudApp::Item]
@@ -118,6 +127,7 @@ module CloudApp
     end
     
     # Send an item to the trash.
+    #
     # Finds the item by it's slug id, for example "2wr4".
     #
     # Requires authentication.

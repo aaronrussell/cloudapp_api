@@ -18,8 +18,9 @@ module CloudApp
     format :json
     
     # Sets the authentication credentials in a class variable.
-    # @param [String] cl.ly username
-    # @param [String] cl.ly password
+    #
+    # @param [String] username cl.ly username
+    # @param [String] password cl.ly password
     # @return [Hash] authentication credentials
     def self.authenticate(username, password)
       @@auth = {:username => username, :password => password}
@@ -28,6 +29,7 @@ module CloudApp
     private
     
     # Sets the attributes for object.
+    #
     # @param [Hash] attributes
     def load(attributes = {})
       attributes.each do |key, val|

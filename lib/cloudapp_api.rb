@@ -13,8 +13,9 @@ module CloudApp
   VERSION = "0.1.0"
   
   # Sets the authentication credentials in a class variable
-  # @param [String] cl.ly username
-  # @param [String] cl.ly password
+  #
+  # @param [String] username cl.ly username
+  # @param [String] password cl.ly password
   # @return [Hash] authentication credentials
   def CloudApp.authenticate(username, password)
     Base.authenticate(username, password)
