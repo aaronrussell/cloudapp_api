@@ -2,7 +2,7 @@
 
 A simple Ruby wrapper for the [CloudApp API](http://support.getcloudapp.com/faqs/developers/api). Uses [HTTParty](http://github.com/jnunemaker/httparty) with a simple ActiveResource-like interface.
 
-Two interfaces are provided for interacting with the CloudApp API. The first is a ActiveResource-like interface, directly calling methods on the Item and Account class. The second option is to interact through a Client interface.
+Two interfaces are provided for interacting with the CloudApp API. The first is a ActiveResource-like interface, directly calling methods on the Drop and Account classes. The second option is to interact through a Client interface.
 
 * [Familiarise yourself with the documentation](http://rubydoc.info/github/aaronrussell/cloudapp_api/)
 
@@ -14,7 +14,7 @@ To install as a Gem:
 
 ## Authentication
 
-Authentication is necessary for most actions, the only exceptions being when creating a new Account or querying a specific Item.
+Authentication is necessary for most actions, the only exceptions being when creating a new Account or querying a specific Drop.
 
     CloudApp.authenticate "email@address.com", "password"
 
@@ -153,6 +153,10 @@ Authentication is necessary for most actions, the only exceptions being when cre
     CloudApp::GiftCard.redeem "ABC123"
       # or
     @gift.redeem
+
+## To do
+
+* Much better error handling
 
 ## Note on Patches/Pull Requests
  
