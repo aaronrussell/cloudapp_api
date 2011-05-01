@@ -14,25 +14,26 @@ def fake_it_all
   {
     # GET URLs
     :get => {
-      %r{http://cl.ly/}           => File.join('item', 'show'),
-      'http://my.cl.ly/items'     => File.join('item', 'index'),
-      'http://my.cl.ly/items/new' => File.join('item', 'new'),
-      'http://my.cl.ly/items/s3'  => File.join('item', 'show'),
-      'http://my.cl.ly/account'   => File.join('account', 'show')
+      %r{http://cl.ly/\w+}            => File.join('item', 'show'),
+      'http://my.cl.ly/items'         => File.join('item', 'index'),
+      'http://my.cl.ly/items/new'     => File.join('item', 'new'),
+      'http://my.cl.ly/items/s3'      => File.join('item', 'show'),
+      'http://my.cl.ly/account'       => File.join('account', 'show'),
+      'http://my.cl.ly/account/stats' => File.join('account', 'stats')
     },
     # POST URLs
     :post => {
-      %r{http://my.cl.ly/items}   => File.join('item', 'create'),
-      'http://my.cl.ly/register'  => File.join('account', 'create')
+      'http://my.cl.ly/items'         => File.join('item', 'create'),
+      'http://my.cl.ly/register'      => File.join('account', 'create')
     },
     # PUT URLs
     :put => {
-      %r{http://my.cl.ly/items}   => File.join('item', 'update'),
-      'http://my.cl.ly/account'   => File.join('account', 'update')
+      %r{http://my.cl.ly/items/\d+}   => File.join('item', 'update'),
+      'http://my.cl.ly/account'       => File.join('account', 'update')
     },
     # DELETE URLs
     :delete => {
-      %r{http://my.cl.ly/items}   => File.join('item', 'delete')
+      %r{http://my.cl.ly/items/\d+}   => File.join('item', 'delete')
     }
   }.
   each do |method, requests|

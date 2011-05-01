@@ -26,6 +26,9 @@ module CloudApp
   #   
   #   # Forgot password
   #   CloudApp::Account.reset :email => "arthur@dent.com"
+  #   
+  #   # View account stats
+  #   CloudApp::Account.stats
   #
   # @example Usage via the class instance
   #   # Change default security
@@ -42,6 +45,9 @@ module CloudApp
   #   
   #   # Forgot password
   #   @account.reset
+  #   
+  #   # View account stats
+  #   @account.stats
   #
   class Account < Base
     
@@ -91,6 +97,16 @@ module CloudApp
       res = post "/reset", :body => {:user => opts}
       res.ok? ? true : res
     end
+    
+    # Get the total number of items created and total views for all items.
+    #
+    # Requires authentication.
+    # 
+    # @return [Hash]
+    def self.stats
+      res = get "/account/stats", :digest_auth => @@auth
+      res.ok? ? res.symbolize_keys! : res
+    end
         
     attr_reader :id, :email, :domain, :domain_home_page, :private_items,
                 :subscribed, :alpha, :created_at, :updated_at, :activated_at
@@ -125,6 +141,15 @@ module CloudApp
     # @return [Boolean]
     def reset
       self.class.reset :email => self.email
+    end
+    
+    # Get the total number of items created and total views for all items.
+    #
+    # Requires authentication.
+    # 
+    # @return [Hash]
+    def stats
+      self.class.stats
     end
     
   end

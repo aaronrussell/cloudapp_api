@@ -160,3 +160,28 @@ describe "Set custom domain" do
   
 end
 
+
+describe "View account statistics" do
+  
+  before(:each) do
+    fake_it_all
+    CloudApp.authenticate "testuser@test.com", "password"
+    @account = CloudApp::Account.find
+    @stats = @account.stats
+  end
+  
+  it "should be a Hash object" do
+    @stats.should be_a_kind_of Hash
+  end
+  
+  it "should have a number of items" do
+    @stats[:items].should be_true
+    @stats[:items].should be_a_kind_of Integer
+  end
+  
+  it "should have a number of views" do
+    @stats[:views].should be_true
+    @stats[:views].should be_a_kind_of Integer
+  end
+  
+end
