@@ -18,73 +18,97 @@ Authentication is necessary for most actions, the only exceptions being when cre
 
     CloudApp.authenticate "email@address.com", "password"
 
-## Item examples
+## Drops
 
-* Documentation - {CloudApp::Item}
+* Documentation - {CloudApp::Drop}
 
 ---
 
-### Usage via the Item class
-    # Find a single item by it's slug
-    item = CloudApp::Item.find "2wr4"
-  
-    # Get a list of all items
-    items = CloudApp::Item.all
-  
+### Usage via the Drop class
+
+    # Find a single drop by it's slug
+    @drop = CloudApp::Drop.find "2wr4"
+    
+    # Get a list of all drops
+    @drops = CloudApp::Drop.all
+    
     # Create a new bookmark
-    item = CloudApp::Item.create :bookmark, :name => "CloudApp", :redirect_url => "http://getcloudapp.com"
-  
+    @drop = CloudApp::Drop.create :bookmark, :name => "CloudApp", :redirect_url => "http://getcloudapp.com"
+    
+    # Create multiple bookmarks
+    bookmarks = [
+      { :name => "Authur Dent", :redirect_url => "http://en.wikipedia.org/wiki/Arthur_Dent" },
+      { :name => "Zaphod Beeblebrox", :redirect_url => "http://en.wikipedia.org/wiki/Zaphod_Beeblebrox" }
+    ]
+    @drops = CloudApp::Drop.create :bookmarks, bookmarks
+    
     # Upload a file
-    item = CloudApp::Item.create :upload, :file => "/path/to/image.png"
-  
+    @drop = CloudApp::Drop.create :upload, :file => "/path/to/image.png"
+    @drop = CloudApp::Drop.create :upload, :file => "/path/to/image.png", :private => true
+    
     # Rename a file
-    CloudApp::Item.update "http://my.cl.ly/items/1912565", :name => "Big Screenshot"
-  
-    # Set an items privacy
-    CloudApp::Item.update "http://my.cl.ly/items/1912565", :private => true
-  
-    # Delete an item
-    CloudApp::Item.delete "http://my.cl.ly/items/1912565"
+    CloudApp::Drop.update "http://my.cl.ly/items/1912565", :name => "Big Screenshot"
+    
+    # Set a drop's privacy
+    CloudApp::Drop.update "http://my.cl.ly/items/1912565", :private => true
+    
+    # Delete a drop
+    CloudApp::Drop.delete "http://my.cl.ly/items/1912565"
+ 
+    # Recover a deleted drop
+    CloudApp::Drop.recover "http://my.cl.ly/items/1912565"
 
-### Usage via an Item instance
+### Usage via the class instance
+
     # Rename a file
-    @item.update :name => "Big Screenshot"
-  
-    # Set an items privacy
-    @item.update :private => true
-  
-    # Delete an item
-    @tem.delete
+    @drop.update :name => "Big Screenshot"
+    
+    # Set the drop's privacy
+    @drop.update :private => true
+    
+    # Delete a drop
+    @drop.delete
+ 
+    # Recover a deleted drop
+    @drop.recover
 
-## Usage via a Client instance
+## Drops via a Client instance
 
 * Documentation - {CloudApp::Client}
 
 ---
 
-    # Create a Client instance
-    @client = CloudApp::Client.new
+    # Find a single drop by it's slug
+    drop = @client.drop "2wr4"
     
-    # Find a single item by it's slug
-    item = @client.item "2wr4"
-    
-    # Get a list of all items
-    items = @client.all
+    # Get a list of all drops
+    drops = @client.all
     
     # Create a new bookmark
-    item = @client.bookmark "http://getcloudapp.com", "CloudApp"
+    drop = @client.bookmark "http://getcloudapp.com", "CloudApp"
+    
+    # Create multiple new bookmarks
+    bookmarks = [
+      { :name => "Authur Dent", :redirect_url => "http://en.wikipedia.org/wiki/Arthur_Dent" },
+      { :name => "Zaphod Beeblebrox", :redirect_url => "http://en.wikipedia.org/wiki/Zaphod_Beeblebrox" }
+    ]
+    drops = @client.bookmark bookmarks
     
     # Upload a file
-    item = @client.upload "/path/to/image.png"
+    drop = @client.upload "/path/to/image.png"
+    drop = @client.upload "/path/to/image.png", :private => true
     
     # Rename a file
     @client.rename "2wr4", "Big Screenshot"
     
-    # Set an items privacy
+    # Set a drop's privacy
     @client.privacy "2wr4", true
     
-    # Delete an item
+    # Delete an drop
     @client.delete "2wr4"
+    
+    # Recover a deleted drop
+    @client.recover "2wr4"
 
 ## Account examples
 
@@ -95,12 +119,12 @@ Authentication is necessary for most actions, the only exceptions being when cre
     # Create a CloudApp account
     @account = CloudApp::Account.create :email => "arthur@dent.com", :password => "towel"
     
-    # Forgot password
-    CloudApp::Account.reset :email => "arthur@dent.com"
-    
-    # View details of authenticated account
+    # View account details
     @account = CloudApp::Account.find
     
+    # Forgot password
+    CloudApp::Account.reset :email => "arthur@dent.com"
+     
     # Change default security
     @account.update :private_items => false
     
@@ -113,6 +137,22 @@ Authentication is necessary for most actions, the only exceptions being when cre
     # Set custom domain
     @account.update :domain => "dent.com", :domain_home_page => "http://hhgproject.org"
     
+    # View account stats
+    @account.stats
+
+## Gift cards
+
+* Documentation - {CloudApp::GiftCard}
+
+---
+
+    # View gift card details
+    @gift = CloudApp::GiftCard.find "ABC123"
+    
+    # Apply the gift card
+    CloudApp::GiftCard.redeem "ABC123"
+      # or
+    @gift.redeem
 
 ## Note on Patches/Pull Requests
  

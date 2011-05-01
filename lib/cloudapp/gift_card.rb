@@ -9,8 +9,11 @@ module CloudApp
   # @example Usage via the GiftCard class
   #   # View gift card details
   #   @gift = CloudApp::GiftCard.find "ABC123"
-  # 
   #   
+  #   # Apply the gift card
+  #   CloudApp::GiftCard.redeem "ABC123"
+  #     # or
+  #   @gift.redeem
   # 
   class GiftCard < Base
     
