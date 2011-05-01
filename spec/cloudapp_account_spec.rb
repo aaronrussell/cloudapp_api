@@ -122,14 +122,14 @@ describe "Register account" do
   before(:each) do
     fake_it_all
     @email = "arthur@dent.com"
-    @account = CloudApp::Account.create :email => @email, :current_password => "towel"
+    @account = CloudApp::Account.create :email => @email, :current_password => "towel", :accept_tos => true
   end
   
   it "should be a Account object" do
     @account.should be_a_kind_of CloudApp::Account
   end
   
-  it "should do something" do
+  it "should have the same email" do
     @account.email.should == @email
   end
   

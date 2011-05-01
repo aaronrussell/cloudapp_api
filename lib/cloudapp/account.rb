@@ -1,6 +1,6 @@
 module CloudApp
   
-  # An ActiveResource-like interface through which to interract with the CloudApp API.
+  # An ActiveResource-like interface through which to interract with CloudApp accounts.
   #
   # @example Create a CloudApp account
   #   CloudApp::Account.create :email => "arthur@dent.com", :password => "towel"

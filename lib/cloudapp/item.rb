@@ -1,6 +1,6 @@
 module CloudApp
   
-  # An ActiveResource-like interface through which to interract with the CloudApp API.
+  # An ActiveResource-like interface through which to interract with CloudApp items.
   #
   # @example Gets started by Authenticating
   #   CloudApp.authenticate "username", "password"
@@ -61,7 +61,7 @@ module CloudApp
     # @option opts [Boolean] :deleted Show trashed items
     # @return [Array[CloudApp::Item]]
     def self.all(opts = {})
-      res = get "/items?#{opts.to_params}", :digest_auth => @@auth
+      res = get "/items", {:query => (opts.empty? ? nil : opts), :digest_auth => @@auth}
       res.ok? ? res.collect{|i| Item.new(i)} : res
     end
     
