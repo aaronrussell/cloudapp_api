@@ -85,6 +85,34 @@ describe "Bookmark link" do
 end
 
 
+describe "Bookmark multiple links" do
+  
+  before(:each) do
+    fake_it_all
+    # overwrite the normal fake uri for this spec
+    FakeWeb.register_uri :post, 'http://my.cl.ly/items', :response => stub_file(File.join('item', 'index'))
+    CloudApp.authenticate "testuser@test.com", "password"
+    @bookmarks = [
+      { :name         => "Authur Dent",       :redirect_url => "http://en.wikipedia.org/wiki/Arthur_Dent" },
+      { :name         => "Ford Prefect",      :redirect_url => "http://en.wikipedia.org/wiki/Ford_Prefect_(character)"},
+      { :name         => "Zaphod Beeblebrox", :redirect_url => "http://en.wikipedia.org/wiki/Zaphod_Beeblebrox" }
+    ]
+    @items = CloudApp::Item.create :bookmarks, @bookmarks
+  end
+  
+  it "should be an Array" do
+    @items.should be_a_kind_of Array
+  end
+  
+  it "should contain Item objects" do
+    @items.each do |item|
+      item.should be_a_kind_of CloudApp::Item
+    end
+  end
+    
+end
+
+
 describe "Change security of an item" do
   
   before(:each) do

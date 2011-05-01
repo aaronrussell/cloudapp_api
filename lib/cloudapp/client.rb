@@ -16,6 +16,13 @@ module CloudApp
   #   # Create a new bookmark
   #   item = @client.bookmark "http://getcloudapp.com", "CloudApp"
   #   
+  #   # Create multiple new bookmarks
+  #   bookmarks = [
+  #     { :name => "Authur Dent", :redirect_url => "http://en.wikipedia.org/wiki/Arthur_Dent" },
+  #     { :name => "Zaphod Beeblebrox", :redirect_url => "http://en.wikipedia.org/wiki/Zaphod_Beeblebrox" }
+  #   ]
+  #   items = @client.bookmark bookmarks
+  #   
   #   # Upload a file
   #   item = @client.upload "/path/to/image.png"
   #   
@@ -77,15 +84,23 @@ module CloudApp
       Item.all(opts)
     end
     
-    # Create a new cl.ly item by bookmarking a link.
+    # Create a new cl.ly item by bookmarking one or more links.
     #
     # Requires authentication.
     #
-    # @param [String] url url to bookmark
-    # @param [String] name name of bookmark
+    # @overload bookmark(url, name = "")
+    #   @param [String] url url to bookmark
+    #   @param [String] name name of bookmark
+    # @overload bookmark(opts)
+    #   @param [Array] opts array of bookmark option parameters (containing +:name+ and +:redirect_url+)
     # @return [CloudApp::Item]
-    def bookmark(url, name = "")
-      Item.create(:bookmark, {:name => name, :redirect_url => url})
+    def bookmark(*args)
+      if args[0].is_a? Array
+        Item.create(:bookmarks, args)
+      else
+        name, url = args[0], (args[1] || "")
+        Item.create(:bookmark, {:name => name, :redirect_url => url})
+      end
     end
     
     # Create a new cl.ly item by uploading a file.

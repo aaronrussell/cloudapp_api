@@ -35,6 +35,21 @@ describe CloudApp::Client do
     item.name.should == name
   end
   
+  it "should bookmark multiple items" do
+    # overwrite the normal fake uri for this spec
+    FakeWeb.register_uri :post, 'http://my.cl.ly/items', :response => stub_file(File.join('item', 'index'))
+    bookmarks = [
+      { :name         => "Authur Dent",       :redirect_url => "http://en.wikipedia.org/wiki/Arthur_Dent" },
+      { :name         => "Ford Prefect",      :redirect_url => "http://en.wikipedia.org/wiki/Ford_Prefect_(character)"},
+      { :name         => "Zaphod Beeblebrox", :redirect_url => "http://en.wikipedia.org/wiki/Zaphod_Beeblebrox" }
+    ]
+    items = @client.bookmark bookmarks
+    items.should be_a_kind_of Array
+    items.each do |item|
+      item.should be_a_kind_of CloudApp::Item
+    end
+  end
+  
   it "should upload a file" do
     item = @client.upload "README.md"
     item.should be_a_kind_of CloudApp::Item
@@ -60,6 +75,4 @@ describe CloudApp::Client do
     item.deleted_at.should be_a_kind_of Time
   end
   
-  
 end
-

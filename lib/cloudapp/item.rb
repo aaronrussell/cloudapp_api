@@ -7,16 +7,23 @@ module CloudApp
   #
   # @example Usage via the Item class
   #   # Find a single item by it's slug
-  #   item = CloudApp::Item.find "2wr4"
+  #   @item = CloudApp::Item.find "2wr4"
   #   
   #   # Get a list of all items
-  #   items = CloudApp::Item.all
+  #   @items = CloudApp::Item.all
   #   
   #   # Create a new bookmark
-  #   item = CloudApp::Item.create :bookmark, :name => "CloudApp", :redirect_url => "http://getcloudapp.com"
+  #   @item = CloudApp::Item.create :bookmark, :name => "CloudApp", :redirect_url => "http://getcloudapp.com"
+  #   
+  #   # Create multiple bookmarks
+  #   bookmarks = [
+  #     { :name => "Authur Dent", :redirect_url => "http://en.wikipedia.org/wiki/Arthur_Dent" },
+  #     { :name => "Zaphod Beeblebrox", :redirect_url => "http://en.wikipedia.org/wiki/Zaphod_Beeblebrox" }
+  #   ]
+  #   @items = CloudApp::Item.create :bookmarks, bookmarks
   #   
   #   # Upload a file
-  #   item = CloudApp::Item.create :upload, :file => "/path/to/image.png"
+  #   @item = CloudApp::Item.create :upload, :file => "/path/to/image.png"
   #   
   #   # Rename a file
   #   CloudApp::Item.update "http://my.cl.ly/items/1912565", :name => "Big Screenshot"
@@ -35,7 +42,7 @@ module CloudApp
   #   @item.update :private => true
   #   
   #   # Delete an item
-  #   @tem.delete
+  #   @item.delete
   #
   class Item < Base
     
@@ -65,29 +72,37 @@ module CloudApp
       res.ok? ? res.collect{|i| Item.new(i)} : res
     end
     
-    # Create a new cl.ly item. 
+    # Create a new cl.ly item. Multiple bookmarks can be created at once by
+    # passing an array of bookmark options parameters.
     #
     # Requires authentication.
     #
-    # @param [Symbol] kind type of cl.ly item (can be :bookmark or :upload)
-    # @param [Hash] opts options paramaters
-    # @option opts [String] :name Name of bookmark (only required for +:bookmark+ kind)
-    # @option opts [String] :redirect_url Redirect URL (only required for +:bookmark+ kind)
-    # @option opts [String] :file Path to file (only required for +:upload+ kind)
+    # @param [Symbol] kind type of cl.ly item (can be +:bookmark+, +:bookmarks+ or +:upload+)
+    # @overload self.create(:bookmark, opts = {})
+    #   @param [Hash] opts options paramaters
+    #   @option opts [String] :name Name of bookmark (only required for +:bookmark+ kind)
+    #   @option opts [String] :redirect_url Redirect URL (only required for +:bookmark+ kind)
+    # @overload self.create(:bookmarks, bookmarks)
+    #   @param [Array] bookmarks array of bookmark option parameters (containing +:name+ and +:redirect_url+)
+    # @overload self.create(:upload, opts = {})
+    #   @param [Hash] opts options paramaters
+    #   @option opts [String] :file Path to file (only required for +:upload+ kind)
     # @return [CloudApp::Item]
     def self.create(kind, opts = {})
       case kind
       when :bookmark
         res = post "/items", {:body => {:item => opts}, :digest_auth => @@auth}
+      when :bookmarks
+        res = post "/items", {:body => {:items => opts}, :digest_auth => @@auth}
       when :upload
-        res = get "/items/new", :digest_auth => @@auth
-        return res unless res.ok?
-        res = post res['url'], Multipart.new(res['params'].merge!(:file => File.new(opts[:file]))).payload.merge!(:digest_auth => @@auth)
+        r = get "/items/new", :digest_auth => @@auth
+        return r unless r.ok?
+        res = post r['url'], Multipart.new(r['params'].merge!(:file => File.new(opts[:file]))).payload.merge!(:digest_auth => @@auth)
       else
         # TODO raise an error
         return false
       end
-      res.ok? ? Item.new(res) : res
+      res.ok? ? (res.is_a?(Array) ? res.collect{|i| Item.new(i)} : Item.new(res)) : res
     end
     
     # Modify a cl.ly item. Can currently modify it's name or security setting by passing parameters.
