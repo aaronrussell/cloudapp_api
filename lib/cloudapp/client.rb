@@ -25,6 +25,7 @@ module CloudApp
   #   
   #   # Upload a file
   #   item = @client.upload "/path/to/image.png"
+  #   item = @client.upload "/path/to/image.png", :private => true
   #   
   #   # Rename a file
   #   @client.rename "2wr4", "Big Screenshot"
@@ -34,6 +35,9 @@ module CloudApp
   #   
   #   # Delete an item
   #   @client.delete "2wr4"
+  #   
+  #   # Recover a deleted item
+  #   @client.recover "2wr4"
   #
   class Client
     
@@ -108,9 +112,11 @@ module CloudApp
     # Requires authentication.
     #
     # @param [String] file local path to file
+    # @param [optional, Hash] opts options paramaters
+    # @option opts [Boolean] :private override the account default privacy setting
     # @return [CloudApp::Item]
-    def upload(file)
-      Item.create(:upload, :file => file)
+    def upload(file, opts = {})
+      Item.create(:upload, opts.merge(:file => file))
     end
     
     # Change the name of an item.
@@ -152,6 +158,19 @@ module CloudApp
     def delete(id)
       item = Item.find(id)
       item.class == Item ? item.delete : item
+    end
+    
+    # Recover a deleted item from the trash.
+    #
+    # Finds the item by it's slug id, for example "2wr4".
+    #
+    # Requires authentication.
+    #
+    # @param [String] id cl.ly item id
+    # @return [CloudApp::Item]
+    def recover(id)
+      item = Item.find(id)
+      item.class == Item ? item.recover : item
     end
         
   end

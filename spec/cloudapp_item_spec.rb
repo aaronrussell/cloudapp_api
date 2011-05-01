@@ -178,6 +178,21 @@ end
 
 
 describe "Recover deleted item" do
+  
+  before(:each) do
+    fake_it_all
+    CloudApp.authenticate "testuser@test.com", "password"
+    @item = CloudApp::Item.recover "http://my.cl.ly/items/1912565"
+  end
+  
+  it "should be an Item object" do
+    @item.should be_a_kind_of CloudApp::Item
+  end
+  
+  it "should not have a deleted_at timestamp" do
+    @item.deleted_at.should == nil
+  end
+  
 end
 
 
@@ -219,5 +234,25 @@ describe "Upload file" do
   
 end
 
+
+describe "Upload file with specific privacy" do
+  
+  before(:each) do
+    fake_it_all
+    # override the upload fakeweb uri
+    FakeWeb.register_uri :post, 'http://f.cl.ly', :status => ["303"], :location => "http://my.cl.ly/items/s3?item[private]=true"
+    CloudApp.authenticate "testuser@test.com", "password"
+    @item = CloudApp::Item.create :upload, {:file => "README.md", :private => true}
+  end
+  
+  it "should be an Item object" do
+    @item.should be_a_kind_of CloudApp::Item
+  end
+  
+  it "should return a item type" do
+    @item.private.should == true
+  end
+  
+end
 
 

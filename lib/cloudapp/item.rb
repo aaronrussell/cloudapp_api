@@ -24,6 +24,7 @@ module CloudApp
   #   
   #   # Upload a file
   #   @item = CloudApp::Item.create :upload, :file => "/path/to/image.png"
+  #   @item = CloudApp::Item.create :upload, :file => "/path/to/image.png", :private => true
   #   
   #   # Rename a file
   #   CloudApp::Item.update "http://my.cl.ly/items/1912565", :name => "Big Screenshot"
@@ -34,6 +35,9 @@ module CloudApp
   #   # Delete an item
   #   CloudApp::Item.delete "http://my.cl.ly/items/1912565"
   #
+  #   # Recover a deleted item
+  #   CloudApp::Item.recover "http://my.cl.ly/items/1912565"
+  #
   # @example Usage via the class instance
   #   # Rename a file
   #   @item.update :name => "Big Screenshot"
@@ -43,6 +47,9 @@ module CloudApp
   #   
   #   # Delete an item
   #   @item.delete
+  #
+  #   # Recover a deleted item
+  #   @item.recover
   #
   class Item < Base
     
@@ -87,6 +94,7 @@ module CloudApp
     # @overload self.create(:upload, opts = {})
     #   @param [Hash] opts options paramaters
     #   @option opts [String] :file Path to file (only required for +:upload+ kind)
+    #   @option opts [Boolean] :private override the account default privacy setting
     # @return [CloudApp::Item]
     def self.create(kind, opts = {})
       case kind
@@ -95,7 +103,7 @@ module CloudApp
       when :bookmarks
         res = post "/items", {:body => {:items => opts}, :digest_auth => @@auth}
       when :upload
-        r = get "/items/new", :digest_auth => @@auth
+        r = get "/items/new", {:query => ({:item => {:private => opts[:private]}} if opts.has_key?(:private)), :digest_auth => @@auth}
         return r unless r.ok?
         res = post r['url'], Multipart.new(r['params'].merge!(:file => File.new(opts[:file]))).payload.merge!(:digest_auth => @@auth)
       else
@@ -126,7 +134,19 @@ module CloudApp
     # @param [String] href href attribute of cl.ly item
     # @return [CloudApp::Item]
     def self.delete(href)
+      # Use delete on the Base class to avoid recursion
       res = Base.delete href, :digest_auth => @@auth
+      res.ok? ? Item.new(res) : res
+    end
+    
+    # Recover an item in the trash.
+    #
+    # Requires authentication.
+    #
+    # @param [String] href href attribute of cl.ly item
+    # @return [CloudApp::Item]
+    def self.recover(href)
+      res = put href, {:body => {:deleted => true, :item => {:deleted_at => nil}}, :digest_auth => @@auth}
       res.ok? ? Item.new(res) : res
     end
     
@@ -158,6 +178,13 @@ module CloudApp
     # @return [CloudApp::Item]
     def delete
       self.class.delete self.href
+    end
+    
+    # Recover the item from the trash.
+    #
+    # @return [CloudApp::Item]
+    def recover
+      self.class.recover self.href
     end
         
   end

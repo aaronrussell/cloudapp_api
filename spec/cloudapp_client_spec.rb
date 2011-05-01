@@ -56,6 +56,14 @@ describe CloudApp::Client do
     item.item_type.should == "image"
   end
   
+  it "should upload a file with specific privacy" do
+    # override the upload fakeweb uri
+    FakeWeb.register_uri :post, 'http://f.cl.ly', :status => ["303"], :location => "http://my.cl.ly/items/s3?item[private]=true"
+    item = @client.upload "README.md", :private => true
+    item.should be_a_kind_of CloudApp::Item
+    item.private.should == true
+  end
+  
   it "should rename an item" do
     name = "CloudApp"
     item = @client.rename "2wr4", name
@@ -73,6 +81,12 @@ describe CloudApp::Client do
     item = @client.delete "2wr4"
     item.should be_a_kind_of CloudApp::Item
     item.deleted_at.should be_a_kind_of Time
+  end
+  
+  it "should recover an item" do
+    item = @client.recover "2wr4"
+    item.should be_a_kind_of CloudApp::Item
+    item.deleted_at.should == nil
   end
   
 end

@@ -16,8 +16,10 @@ def fake_it_all
     :get => {
       %r{http://cl.ly/\w+}                => File.join('item', 'show'),
       'http://my.cl.ly/items'             => File.join('item', 'index'),
-      'http://my.cl.ly/items/new'         => File.join('item', 'new'),
+      'http://my.cl.ly/items/new'         => File.join('item', 'new-private'),
+      'http://my.cl.ly/items/new?item[private]=true' => File.join('item', 'new'),
       'http://my.cl.ly/items/s3'          => File.join('item', 'show'),
+      'http://my.cl.ly/items/s3?item[private]=true' => File.join('item', 'show-private'),
       'http://my.cl.ly/account'           => File.join('account', 'show'),
       'http://my.cl.ly/account/stats'     => File.join('account', 'stats'),
       %r{http://my.cl.ly/gift_cards/\w+}  => File.join('gift_card', 'show')
