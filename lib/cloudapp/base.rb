@@ -19,11 +19,11 @@ module CloudApp
     
     # Sets the authentication credentials in a class variable.
     #
-    # @param [String] username cl.ly username
+    # @param [String] email cl.ly email
     # @param [String] password cl.ly password
     # @return [Hash] authentication credentials
-    def self.authenticate(username, password)
-      @@auth = {:username => username, :password => password}
+    def self.authenticate(email, password)
+      @@auth = {:username => email, :password => password}
     end
     
     private

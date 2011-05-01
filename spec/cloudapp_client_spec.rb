@@ -15,78 +15,78 @@ describe CloudApp::Client do
     auth[:username].should == username
   end
   
-  it "should find an item" do
-    item = @client.item "2wr4"
-    item.should be_a_kind_of CloudApp::Item
+  it "should find an drop" do
+    drop = @client.drop "2wr4"
+    drop.should be_a_kind_of CloudApp::Drop
   end
   
-  it "should list all items" do
-    items = @client.items
-    items.should be_a_kind_of Array
-    items.each do |item|
-      item.should be_a_kind_of CloudApp::Item
+  it "should list all drops" do
+    drops = @client.drops
+    drops.should be_a_kind_of Array
+    drops.each do |drop|
+      drop.should be_a_kind_of CloudApp::Drop
     end
   end
   
-  it "should bookmark an item" do
+  it "should bookmark an drop" do
     name = "CloudApp"
-    item = @client.bookmark "http://getcloudapp.com", name
-    item.should be_a_kind_of CloudApp::Item
-    item.name.should == name
+    drop = @client.bookmark "http://getcloudapp.com", name
+    drop.should be_a_kind_of CloudApp::Drop
+    drop.name.should == name
   end
   
-  it "should bookmark multiple items" do
+  it "should bookmark multiple drops" do
     # overwrite the normal fake uri for this spec
-    FakeWeb.register_uri :post, 'http://my.cl.ly/items', :response => stub_file(File.join('item', 'index'))
+    FakeWeb.register_uri :post, 'http://my.cl.ly/items', :response => stub_file(File.join('drop', 'index'))
     bookmarks = [
       { :name         => "Authur Dent",       :redirect_url => "http://en.wikipedia.org/wiki/Arthur_Dent" },
       { :name         => "Ford Prefect",      :redirect_url => "http://en.wikipedia.org/wiki/Ford_Prefect_(character)"},
       { :name         => "Zaphod Beeblebrox", :redirect_url => "http://en.wikipedia.org/wiki/Zaphod_Beeblebrox" }
     ]
-    items = @client.bookmark bookmarks
-    items.should be_a_kind_of Array
-    items.each do |item|
-      item.should be_a_kind_of CloudApp::Item
+    drops = @client.bookmark bookmarks
+    drops.should be_a_kind_of Array
+    drops.each do |drop|
+      drop.should be_a_kind_of CloudApp::Drop
     end
   end
   
   it "should upload a file" do
-    item = @client.upload "README.md"
-    item.should be_a_kind_of CloudApp::Item
-    item.item_type.should == "image"
+    drop = @client.upload "README.md"
+    drop.should be_a_kind_of CloudApp::Drop
+    drop.item_type.should == "image"
   end
   
   it "should upload a file with specific privacy" do
     # override the upload fakeweb uri
     FakeWeb.register_uri :post, 'http://f.cl.ly', :status => ["303"], :location => "http://my.cl.ly/items/s3?item[private]=true"
-    item = @client.upload "README.md", :private => true
-    item.should be_a_kind_of CloudApp::Item
-    item.private.should == true
+    drop = @client.upload "README.md", :private => true
+    drop.should be_a_kind_of CloudApp::Drop
+    drop.private.should == true
   end
   
-  it "should rename an item" do
+  it "should rename an drop" do
     name = "CloudApp"
-    item = @client.rename "2wr4", name
-    item.should be_a_kind_of CloudApp::Item
-    item.name.should == name
+    drop = @client.rename "2wr4", name
+    drop.should be_a_kind_of CloudApp::Drop
+    drop.name.should == name
   end
   
-  it "should set an items privacy" do
-    item = @client.privacy "2wr4", false
-    item.should be_a_kind_of CloudApp::Item
-    item.private.should == false
+  it "should set an drops privacy" do
+    drop = @client.privacy "2wr4", false
+    drop.should be_a_kind_of CloudApp::Drop
+    drop.private.should == false
   end
   
-  it "should delete an item" do
-    item = @client.delete "2wr4"
-    item.should be_a_kind_of CloudApp::Item
-    item.deleted_at.should be_a_kind_of Time
+  it "should delete an drop" do
+    drop = @client.delete "2wr4"
+    drop.should be_a_kind_of CloudApp::Drop
+    drop.deleted_at.should be_a_kind_of Time
   end
   
-  it "should recover an item" do
-    item = @client.recover "2wr4"
-    item.should be_a_kind_of CloudApp::Item
-    item.deleted_at.should == nil
+  it "should recover an drop" do
+    drop = @client.recover "2wr4"
+    drop.should be_a_kind_of CloudApp::Drop
+    drop.deleted_at.should == nil
   end
   
 end

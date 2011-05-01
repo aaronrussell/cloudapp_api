@@ -6,37 +6,37 @@ module CloudApp
   #   @client = CloudApp::Client.new
   #   @client.authenticate "username", "password"
   #
-  # @example Creating editing and deleting cl.ly items
-  #   # Find a single item by it's slug
-  #   item = @client.item "2wr4"
+  # @example Creating editing and deleting drops
+  #   # Find a single drop by it's slug
+  #   drop = @client.drop "2wr4"
   #   
-  #   # Get a list of all items
-  #   items = @client.all
+  #   # Get a list of all drops
+  #   drops = @client.all
   #   
   #   # Create a new bookmark
-  #   item = @client.bookmark "http://getcloudapp.com", "CloudApp"
+  #   drop = @client.bookmark "http://getcloudapp.com", "CloudApp"
   #   
   #   # Create multiple new bookmarks
   #   bookmarks = [
   #     { :name => "Authur Dent", :redirect_url => "http://en.wikipedia.org/wiki/Arthur_Dent" },
   #     { :name => "Zaphod Beeblebrox", :redirect_url => "http://en.wikipedia.org/wiki/Zaphod_Beeblebrox" }
   #   ]
-  #   items = @client.bookmark bookmarks
+  #   drops = @client.bookmark bookmarks
   #   
   #   # Upload a file
-  #   item = @client.upload "/path/to/image.png"
-  #   item = @client.upload "/path/to/image.png", :private => true
+  #   drop = @client.upload "/path/to/image.png"
+  #   drop = @client.upload "/path/to/image.png", :private => true
   #   
   #   # Rename a file
   #   @client.rename "2wr4", "Big Screenshot"
   #   
-  #   # Set an items privacy
+  #   # Set a drop's privacy
   #   @client.privacy "2wr4", true
   #   
-  #   # Delete an item
+  #   # Delete an drop
   #   @client.delete "2wr4"
   #   
-  #   # Recover a deleted item
+  #   # Recover a deleted drop
   #   @client.recover "2wr4"
   #
   class Client
@@ -66,15 +66,17 @@ module CloudApp
     
     # Get metadata about a cl.ly URL like name, type, or view count.
     #
-    # Finds the item by it's slug id, for example "2wr4".
+    # Finds the drop by it's slug id, for example "2wr4".
     #
     # @param [String] id cl.ly slug id
-    # @return [CloudApp::Item]
-    def item(id)
-      Item.find(id)
+    # @return [CloudApp::Drop]
+    def drop(id)
+      Drop.find(id)
     end
     
-    # Page through your items.
+    alias_method :item, :drop
+    
+    # Page through your drops.
     #
     # Requires authentication.
     #
@@ -82,13 +84,15 @@ module CloudApp
     # @option opts [Integer] :page (1) Page number starting at 1
     # @option opts [Integer] :per_page (5) Number of items per page
     # @option opts [String] :type ('image') Filter items by type (image, bookmark, text, archive, audio, video, or unknown)
-    # @option opts [Boolean] :deleted (true) Show trashed items
-    # @return [Array[CloudApp::Item]]
-    def items(opts = {})
-      Item.all(opts)
+    # @option opts [Boolean] :deleted (true) Show trashed drops
+    # @return [Array[CloudApp::Drop]]
+    def drops(opts = {})
+      Drop.all(opts)
     end
     
-    # Create a new cl.ly item by bookmarking one or more links.
+    alias_method :items, :drops
+    
+    # Create one or more new bookmark drops.
     #
     # Requires authentication.
     #
@@ -97,80 +101,80 @@ module CloudApp
     #   @param [String] name name of bookmark
     # @overload bookmark(opts)
     #   @param [Array] opts array of bookmark option parameters (containing +:name+ and +:redirect_url+)
-    # @return [CloudApp::Item]
+    # @return [CloudApp::Drop]
     def bookmark(*args)
       if args[0].is_a? Array
-        Item.create(:bookmarks, args)
+        Drop.create(:bookmarks, args)
       else
         name, url = args[0], (args[1] || "")
-        Item.create(:bookmark, {:name => name, :redirect_url => url})
+        Drop.create(:bookmark, {:name => name, :redirect_url => url})
       end
     end
     
-    # Create a new cl.ly item by uploading a file.
+    # Create a new drop by uploading a file.
     #
     # Requires authentication.
     #
     # @param [String] file local path to file
     # @param [optional, Hash] opts options paramaters
     # @option opts [Boolean] :private override the account default privacy setting
-    # @return [CloudApp::Item]
+    # @return [CloudApp::Drop]
     def upload(file, opts = {})
-      Item.create(:upload, opts.merge(:file => file))
+      Drop.create(:upload, opts.merge(:file => file))
     end
     
-    # Change the name of an item.
+    # Change the name of the drop.
     #
-    # Finds the item by it's slug id, for example "2wr4".
+    # Finds the drop by it's slug id, for example "2wr4".
     #
     # Requires authentication.
     #
-    # @param [String] id cl.ly item id
-    # @param [String] name new item name
-    # @return [CloudApp::Item]
+    # @param [String] id drop id
+    # @param [String] name new drop name
+    # @return [CloudApp::Drop]
     def rename(id, name = "")
-      item = Item.find(id)
-      item.class == Item ? item.update(:name => name) : item
+      drop = Drop.find(id)
+      drop.class == Drop ? drop.update(:name => name) : drop
     end
     
-    # Modify an item with a private URL to have a public URL or vice versa.
+    # Modify a drop with a private URL to have a public URL or vice versa.
     #
-    # Finds the item by it's slug id, for example "2wr4".
+    # Finds the drop by it's slug id, for example "2wr4".
     #
     # Requires authentication.
     #
-    # @param [String] id cl.ly item id
+    # @param [String] id drop id
     # @param [Boolean] privacy privacy setting
-    # @return [CloudApp::Item]
+    # @return [CloudApp::Drop]
     def privacy(id, privacy = false)
-      item = Item.find(id)
-      item.class == Item ? item.update(:private => privacy) : item
+      drop = Drop.find(id)
+      drop.class == Drop ? drop.update(:private => privacy) : drop
     end
     
-    # Send an item to the trash.
+    # Send the drop to the trash.
     #
-    # Finds the item by it's slug id, for example "2wr4".
+    # Finds the drop by it's slug id, for example "2wr4".
     #
     # Requires authentication.
     #
-    # @param [String] id cl.ly item id
-    # @return [CloudApp::Item]
+    # @param [String] id drop id
+    # @return [CloudApp::Drop]
     def delete(id)
-      item = Item.find(id)
-      item.class == Item ? item.delete : item
+      drop = Drop.find(id)
+      drop.class == Drop ? drop.delete : drop
     end
     
-    # Recover a deleted item from the trash.
+    # Recover a deleted drop from the trash.
     #
-    # Finds the item by it's slug id, for example "2wr4".
+    # Finds the drop by it's slug id, for example "2wr4".
     #
     # Requires authentication.
     #
-    # @param [String] id cl.ly item id
-    # @return [CloudApp::Item]
+    # @param [String] id drop id
+    # @return [CloudApp::Drop]
     def recover(id)
-      item = Item.find(id)
-      item.class == Item ? item.recover : item
+      drop = Drop.find(id)
+      drop.class == Drop ? drop.recover : drop
     end
         
   end

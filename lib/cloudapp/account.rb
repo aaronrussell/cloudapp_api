@@ -74,7 +74,7 @@ module CloudApp
     end
     
     # Modify the authenticated accounts details. Can change the default security of newly
-    # created items, the accounts email address, password, and custom domain details.
+    # created drops, the accounts email address, password, and custom domain details.
     #
     # Note that when changing email address or password, the current password is required.
     # Also note that to change custom domains requires an account with a Pro subscription.
@@ -82,7 +82,7 @@ module CloudApp
     # Requires authentication
     #
     # @param [Hash] opts options parameters
-    # @option opts [Boolean] :private_items Change default security of new items
+    # @option opts [Boolean] :private_items Change default security of new drops
     # @option opts [String] :email Change email address
     # @option opts [String] :password Change password
     # @option opts [String] :current_password Current account password
@@ -104,7 +104,7 @@ module CloudApp
       res.ok? ? true : res
     end
     
-    # Get the total number of items created and total views for all items.
+    # Get the total number of drops created and total views for all drops.
     #
     # Requires authentication.
     # 
@@ -128,13 +128,13 @@ module CloudApp
     end
     
     # Modify the authenticated accounts details. Can change the default security of newly
-    # created items, the accounts email address, password, and custom domain details.
+    # created drops, the accounts email address, password, and custom domain details.
     #
     # Note that when changing email address or password, the current password is required.
     # Also note that to change custom domains requires an account with a Pro subscription.
     #
     # @param [Hash] opts options parameters
-    # @option opts [Boolean] :private_items Change default security of new items
+    # @option opts [Boolean] :private_items Change default security of new drops
     # @option opts [String] :email Change email address
     # @option opts [String] :password Change password
     # @option opts [String] :current_password Current account password
@@ -154,7 +154,7 @@ module CloudApp
       self.class.reset :email => self.email
     end
     
-    # Get the total number of items created and total views for all items.
+    # Get the total number of drops created and total views for all drops.
     # 
     # @return [Hash]
     def stats
