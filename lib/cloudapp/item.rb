@@ -130,8 +130,6 @@ module CloudApp
     
     # Modify the item. Can currently modify it's name or security setting by passing parameters.
     #
-    # Requires authentication.
-    #
     # @param [Hash] opts item parameters
     # @option opts [String] :name for renaming the item
     # @option opts [Boolean] :privacy set item privacy
@@ -141,8 +139,6 @@ module CloudApp
     end
     
     # Send the item to the trash.
-    #
-    # Requires authentication.
     #
     # @return [CloudApp::Item]
     def delete

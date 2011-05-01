@@ -1,4 +1,4 @@
-class Hash
+class Hash #:nodoc:
   
   # Return a new hash with all keys converted to symbols.
   def symbolize_keys
