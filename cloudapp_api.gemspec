@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{cloudapp_api}
-  s.version = "0.1.1"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Aaron Russell"]
-  s.date = %q{2011-01-30}
+  s.date = %q{2011-05-01}
   s.description = %q{A simple Ruby wrapper for the CloudApp API. Uses HTTParty with a simple ActiveResource-like interface.}
   s.email = %q{aaron@gc4.co.uk}
   s.extra_rdoc_files = [
@@ -28,41 +28,51 @@ Gem::Specification.new do |s|
     "lib/cloudapp/account.rb",
     "lib/cloudapp/base.rb",
     "lib/cloudapp/client.rb",
+    "lib/cloudapp/core_ext.rb",
+    "lib/cloudapp/drop.rb",
+    "lib/cloudapp/gift_card.rb",
     "lib/cloudapp/httparty.rb",
-    "lib/cloudapp/item.rb",
     "lib/cloudapp/multipart.rb",
     "lib/cloudapp_api.rb",
     "spec/cloudapp_account_spec.rb",
     "spec/cloudapp_api_spec.rb",
     "spec/cloudapp_client_spec.rb",
+    "spec/cloudapp_drop_spec.rb",
+    "spec/cloudapp_gift_card_spec.rb",
     "spec/cloudapp_item_spec.rb",
     "spec/fakeweb_helper.rb",
     "spec/spec_helper.rb",
     "spec/stubs/account/create",
     "spec/stubs/account/show",
+    "spec/stubs/account/stats",
     "spec/stubs/account/update",
-    "spec/stubs/item/create",
-    "spec/stubs/item/delete",
-    "spec/stubs/item/index",
-    "spec/stubs/item/new",
-    "spec/stubs/item/show",
-    "spec/stubs/item/update"
+    "spec/stubs/drop/create",
+    "spec/stubs/drop/delete",
+    "spec/stubs/drop/index",
+    "spec/stubs/drop/new",
+    "spec/stubs/drop/new-private",
+    "spec/stubs/drop/show",
+    "spec/stubs/drop/show-private",
+    "spec/stubs/drop/update",
+    "spec/stubs/gift_card/redeem",
+    "spec/stubs/gift_card/show"
   ]
   s.homepage = %q{http://github.com/aaronrussell/cloud_app}
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.7}
+  s.rubygems_version = %q{1.7.2}
   s.summary = %q{A simple Ruby wrapper for the CloudApp API. Uses HTTParty with a simple ActiveResource-like interface.}
   s.test_files = [
     "spec/cloudapp_account_spec.rb",
     "spec/cloudapp_api_spec.rb",
     "spec/cloudapp_client_spec.rb",
+    "spec/cloudapp_drop_spec.rb",
+    "spec/cloudapp_gift_card_spec.rb",
     "spec/cloudapp_item_spec.rb",
     "spec/fakeweb_helper.rb",
     "spec/spec_helper.rb"
   ]
 
   if s.respond_to? :specification_version then
-    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
