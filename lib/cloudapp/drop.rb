@@ -176,6 +176,20 @@ module CloudApp
     def recover
       self.class.recover self.href
     end
+    
+    # Is the drop a bookmark?
+    #
+    # @return [Boolean]
+    def bookmark?
+      item_type == 'bookmark'
+    end
+    
+    # Is the drop an image?
+    #
+    # @return [Boolean]
+    def image?
+      item_type == 'image'
+    end
         
   end
   
