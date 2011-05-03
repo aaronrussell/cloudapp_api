@@ -35,7 +35,7 @@ module CloudApp
     # @param [String] code Gift card code
     # @return [CloudApp::GiftCard]
     def self.redeem(code)
-      res = put "/gift_cards/#{code}", :digest_auth => @@auth
+      res = put "/gift_cards/#{code}", {:body => {}, :digest_auth => @@auth}
       res.ok? ? GiftCard.new(res) : res
     end
     
