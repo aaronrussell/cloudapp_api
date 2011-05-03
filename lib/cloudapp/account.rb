@@ -117,16 +117,6 @@ module CloudApp
     attr_reader :id, :email, :domain, :domain_home_page, :private_items,
                 :subscribed, :alpha, :created_at, :updated_at, :activated_at
     
-    # Create a new CloudApp::Account object.
-    #
-    # Only used internally
-    #
-    # @param [Hash] attributes
-    # @param [CloudApp::Account]
-    def initialize(attributes = {})
-      load(attributes)
-    end
-    
     # Modify the authenticated accounts details. Can change the default security of newly
     # created drops, the accounts email address, password, and custom domain details.
     #

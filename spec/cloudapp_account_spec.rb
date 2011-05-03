@@ -46,6 +46,11 @@ describe CloudApp::Account do
     @account.activated_at.should be_a_kind_of Time
   end
   
+  it "should return the raw data hash" do
+    @account.data.should be_a_kind_of Hash
+    @account.data['email'].should == "arthur@dent.com"
+  end
+  
 end
 
 

@@ -153,16 +153,6 @@ module CloudApp
     attr_reader :href, :name, :private, :url, :content_url, :item_type, :view_counter,
                 :icon, :remote_url, :redirect_url, :created_at, :updated_at, :deleted_at
     
-    # Create a new CloudApp::Drop object.
-    #
-    # Only used internally.
-    #
-    # @param [Hash] attributes
-    # @param [CloudApp::Drop]
-    def initialize(attributes = {})
-      load(attributes)
-    end
-    
     # Modify the drop. Can currently modify it's name or security setting by passing parameters.
     #
     # @param [Hash] opts options paramaters

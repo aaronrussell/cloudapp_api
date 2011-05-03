@@ -57,6 +57,11 @@ describe CloudApp::Drop do
     @drop.deleted_at.should == nil
   end
   
+  it "should return the raw data hash" do
+    @drop.data.should be_a_kind_of Hash
+    @drop.data['name'].should == "CloudApp Logo.png"
+  end
+  
 end
 
 
@@ -254,5 +259,3 @@ describe "Upload file with specific privacy" do
   end
   
 end
-
-

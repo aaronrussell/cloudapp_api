@@ -26,6 +26,19 @@ module CloudApp
       @@auth = {:username => email, :password => password}
     end
     
+    attr_reader :data
+    
+    # Create a new CloudApp::Base object.
+    #
+    # Only used internally
+    #
+    # @param [Hash] attributes
+    # @return [CloudApp::Base]
+    def initialize(attributes = {})
+      @data = attributes
+      load(@data)
+    end
+    
     private
     
     # Sets the attributes for object.

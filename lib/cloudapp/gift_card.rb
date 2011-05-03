@@ -41,17 +41,7 @@ module CloudApp
     
     attr_reader :id, :code, :plan, :months, :href,
                 :created_at, :updated_at, :redeemed_at, :effective_at, :expires_at
-    
-    # Create a new CloudApp::GiftCard object.
-    #
-    # Only used internally
-    #
-    # @param [Hash] attributes
-    # @param [CloudApp::GiftCard]
-    def initialize(attributes = {})
-      load(attributes)
-    end
-    
+        
     # Apply the gift card to the authenticated account.
     #
     # @return [CloudApp::GiftCard]

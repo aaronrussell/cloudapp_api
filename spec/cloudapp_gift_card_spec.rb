@@ -39,6 +39,11 @@ describe CloudApp::GiftCard do
     @gift.expires_at.should == nil
   end
   
+  it "should return the raw data hash" do
+    @gift.data.should be_a_kind_of Hash
+    @gift.data['code'].should == "ABC123"
+  end
+  
 end
 
 describe "Redeem gift card" do
