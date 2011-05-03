@@ -20,5 +20,10 @@ module CloudApp
   def CloudApp.authenticate(email, password)
     Base.authenticate(email, password)
   end
+  
+  # Temporary generic error raised on all bad requests
+  #
+  # #TODO - implement MUCH better error handling
+  class GenericError < StandardError; end
     
 end

@@ -61,7 +61,7 @@ module CloudApp
     # @return [CloudApp::Drop]
     def self.find(id)
       res = get "http://cl.ly/#{id}"
-      res.ok? ? Drop.new(res) : res
+      res.ok? ? Drop.new(res) : raise(GenericError)
     end
     
     # Page through your drops.
@@ -76,7 +76,7 @@ module CloudApp
     # @return [Array[CloudApp::Drop]]
     def self.all(opts = {})
       res = get "/items", {:query => (opts.empty? ? nil : opts), :digest_auth => @@auth}
-      res.ok? ? res.collect{|i| Drop.new(i)} : res
+      res.ok? ? res.collect{|i| Drop.new(i)} : raise(GenericError)
     end
     
     # Create a new drop. Multiple bookmarks can be created at once by
@@ -110,7 +110,7 @@ module CloudApp
         # TODO raise an error
         return false
       end
-      res.ok? ? (res.is_a?(Array) ? res.collect{|i| Drop.new(i)} : Drop.new(res)) : res
+      res.ok? ? (res.is_a?(Array) ? res.collect{|i| Drop.new(i)} : Drop.new(res)) : raise(GenericError)
     end
     
     # Modify a drop. Can currently modify it's name or security setting by passing parameters.
@@ -136,7 +136,7 @@ module CloudApp
     def self.delete(href)
       # Use delete on the Base class to avoid recursion
       res = Base.delete href, :digest_auth => @@auth
-      res.ok? ? Drop.new(res) : res
+      res.ok? ? Drop.new(res) : raise(GenericError)
     end
     
     # Recover a drop from the trash.
@@ -147,7 +147,7 @@ module CloudApp
     # @return [CloudApp::Drop]
     def self.recover(href)
       res = put href, {:body => {:deleted => true, :item => {:deleted_at => nil}}, :digest_auth => @@auth}
-      res.ok? ? Drop.new(res) : res
+      res.ok? ? Drop.new(res) : raise(GenericError)
     end
     
     attr_reader :href, :name, :private, :url, :content_url, :item_type, :view_counter,
