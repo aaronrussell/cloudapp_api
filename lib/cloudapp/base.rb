@@ -29,6 +29,9 @@ module CloudApp
       @@auth = {:username => email, :password => password}
     end
     
+    # Examines a bad response and raises an approriate exception
+    #
+    # @param [HTTParty::Response] response
     def self.bad_response(response)
       if response.class == HTTParty::Response
         raise ResponseError, response
