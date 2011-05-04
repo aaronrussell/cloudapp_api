@@ -25,7 +25,7 @@ module CloudApp
     # @return [CloudApp::GiftCard]
     def self.find(code)
       res = get "/gift_cards/#{code}", :digest_auth => @@auth
-      res.ok? ? GiftCard.new(res) : raise(GenericError)
+      res.ok? ? GiftCard.new(res) : bad_response(res)
     end
     
     # Apply a gift card to the authenticated account.
@@ -36,7 +36,7 @@ module CloudApp
     # @return [CloudApp::GiftCard]
     def self.redeem(code)
       res = put "/gift_cards/#{code}", {:body => {}, :digest_auth => @@auth}
-      res.ok? ? GiftCard.new(res) : raise(GenericError)
+      res.ok? ? GiftCard.new(res) : bad_response(res)
     end
     
     attr_reader :id, :code, :plan, :months, :href,

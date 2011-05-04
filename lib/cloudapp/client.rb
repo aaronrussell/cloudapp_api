@@ -134,7 +134,7 @@ module CloudApp
     # @return [CloudApp::Drop]
     def rename(id, name = "")
       drop = Drop.find(id)
-      drop.class == Drop ? drop.update(:name => name) : drop
+      drop.update(:name => name)
     end
     
     # Modify a drop with a private URL to have a public URL or vice versa.
@@ -148,7 +148,7 @@ module CloudApp
     # @return [CloudApp::Drop]
     def privacy(id, privacy = false)
       drop = Drop.find(id)
-      drop.class == Drop ? drop.update(:private => privacy) : drop
+      drop.update(:private => privacy)
     end
     
     # Send the drop to the trash.
@@ -161,7 +161,7 @@ module CloudApp
     # @return [CloudApp::Drop]
     def delete(id)
       drop = Drop.find(id)
-      drop.class == Drop ? drop.delete : drop
+      drop.delete
     end
     
     # Recover a deleted drop from the trash.
@@ -174,7 +174,7 @@ module CloudApp
     # @return [CloudApp::Drop]
     def recover(id)
       drop = Drop.find(id)
-      drop.class == Drop ? drop.recover : drop
+      drop.recover
     end
         
   end

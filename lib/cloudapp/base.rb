@@ -17,6 +17,9 @@ module CloudApp
     headers HEADERS
     format :json
     
+    # Define empty auth hash
+    @@auth = {}
+    
     # Sets the authentication credentials in a class variable.
     #
     # @param [String] email cl.ly email
@@ -24,6 +27,13 @@ module CloudApp
     # @return [Hash] authentication credentials
     def self.authenticate(email, password)
       @@auth = {:username => email, :password => password}
+    end
+    
+    def self.bad_response(response)
+      if response.class == HTTParty::Response
+        raise ResponseError, response
+      end
+      raise StandardError, "Unkown error"
     end
     
     attr_reader :data

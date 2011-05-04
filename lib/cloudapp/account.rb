@@ -58,7 +58,7 @@ module CloudApp
     # @return [CloudApp::Account]
     def self.find
       res = get "/account", :digest_auth => @@auth
-      res.ok? ? Account.new(res) : raise(GenericError)
+      res.ok? ? Account.new(res) : bad_response(res)
     end
     
     # Create a CloudApp account.
@@ -70,7 +70,7 @@ module CloudApp
     # @return [CloudApp::Account]
     def self.create(opts = {})
       res = post "/register", :body => {:user => opts}
-      res.ok? ? Account.new(res) : raise(GenericError)
+      res.ok? ? Account.new(res) : bad_response(res)
     end
     
     # Modify the authenticated accounts details. Can change the default security of newly
@@ -91,7 +91,7 @@ module CloudApp
     # @return [CloudApp::Account]
     def self.update(opts = {})
       res = put "/account", {:body => {:user => opts}, :digest_auth => @@auth}
-      res.ok? ? Account.new(res) : raise(GenericError)
+      res.ok? ? Account.new(res) : bad_response(res)
     end
     
     # Dispatch an email containing a link to reset the account's password.
@@ -101,7 +101,7 @@ module CloudApp
     # @return [Boolean]
     def self.reset(opts = {})
       res = post "/reset", :body => {:user => opts}
-      res.ok? ? true : raise(GenericError)
+      res.ok? ? true : bad_response(res)
     end
     
     # Get the total number of drops created and total views for all drops.
@@ -111,7 +111,7 @@ module CloudApp
     # @return [Hash]
     def self.stats
       res = get "/account/stats", :digest_auth => @@auth
-      res.ok? ? res.symbolize_keys! : raise(GenericError)
+      res.ok? ? res.symbolize_keys! : bad_response(res)
     end
         
     attr_reader :id, :email, :domain, :domain_home_page, :private_items,

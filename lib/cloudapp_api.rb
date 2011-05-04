@@ -1,6 +1,6 @@
 require "httparty"
 
-["base", "drop", "account", "gift_card", "client", "multipart", "httparty", "core_ext"].each do |inc|
+["base", "drop", "account", "gift_card", "client", "multipart", "httparty", "core_ext", "response_error"].each do |inc|
   require File.join(File.dirname(__FILE__), "cloudapp", inc)
 end
 
@@ -20,10 +20,5 @@ module CloudApp
   def CloudApp.authenticate(email, password)
     Base.authenticate(email, password)
   end
-  
-  # Temporary generic error raised on all bad requests
-  #
-  # #TODO - implement MUCH better error handling
-  class GenericError < StandardError; end
-    
+      
 end

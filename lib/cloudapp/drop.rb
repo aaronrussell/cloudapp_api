@@ -61,7 +61,7 @@ module CloudApp
     # @return [CloudApp::Drop]
     def self.find(id)
       res = get "http://cl.ly/#{id}"
-      res.ok? ? Drop.new(res) : raise(GenericError)
+      res.ok? ? Drop.new(res) : bad_response(res)
     end
     
     # Page through your drops.
@@ -76,7 +76,7 @@ module CloudApp
     # @return [Array[CloudApp::Drop]]
     def self.all(opts = {})
       res = get "/items", {:query => (opts.empty? ? nil : opts), :digest_auth => @@auth}
-      res.ok? ? res.collect{|i| Drop.new(i)} : raise(GenericError)
+      res.ok? ? res.collect{|i| Drop.new(i)} : bad_response(res)
     end
     
     # Create a new drop. Multiple bookmarks can be created at once by
@@ -104,13 +104,13 @@ module CloudApp
         res = post "/items", {:body => {:items => opts}, :digest_auth => @@auth}
       when :upload
         r = get "/items/new", {:query => ({:item => {:private => opts[:private]}} if opts.has_key?(:private)), :digest_auth => @@auth}
-        return r unless r.ok?
+        return bad_response(res) unless r.ok?
         res = post r['url'], Multipart.new(r['params'].merge!(:file => File.new(opts[:file]))).payload.merge!(:digest_auth => @@auth)
       else
         # TODO raise an error
         return false
       end
-      res.ok? ? (res.is_a?(Array) ? res.collect{|i| Drop.new(i)} : Drop.new(res)) : raise(GenericError)
+      res.ok? ? (res.is_a?(Array) ? res.collect{|i| Drop.new(i)} : Drop.new(res)) : bad_response(res)
     end
     
     # Modify a drop. Can currently modify it's name or security setting by passing parameters.
@@ -124,7 +124,7 @@ module CloudApp
     # @return [CloudApp::Drop]
     def self.update(href, opts = {})
       res = put href, {:body => {:item => opts}, :digest_auth => @@auth}
-      res.ok? ? Drop.new(res) : res
+      res.ok? ? Drop.new(res) : bad_response(res)
     end
     
     # Send a drop to the trash.
@@ -136,7 +136,7 @@ module CloudApp
     def self.delete(href)
       # Use delete on the Base class to avoid recursion
       res = Base.delete href, :digest_auth => @@auth
-      res.ok? ? Drop.new(res) : raise(GenericError)
+      res.ok? ? Drop.new(res) : bad_response(res)
     end
     
     # Recover a drop from the trash.
@@ -147,7 +147,7 @@ module CloudApp
     # @return [CloudApp::Drop]
     def self.recover(href)
       res = put href, {:body => {:deleted => true, :item => {:deleted_at => nil}}, :digest_auth => @@auth}
-      res.ok? ? Drop.new(res) : raise(GenericError)
+      res.ok? ? Drop.new(res) : bad_response(res)
     end
     
     attr_reader :href, :name, :private, :url, :content_url, :item_type, :view_counter,
