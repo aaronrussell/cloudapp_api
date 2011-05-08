@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{cloudapp_api}
-  s.version = "0.2.2"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Aaron Russell"]
-  s.date = %q{2011-05-03}
+  s.date = %q{2011-05-08}
   s.description = %q{A simple Ruby wrapper for the CloudApp API. Uses HTTParty with a simple ActiveResource-like interface.}
   s.email = %q{aaron@gc4.co.uk}
   s.extra_rdoc_files = [
@@ -33,6 +33,7 @@ Gem::Specification.new do |s|
     "lib/cloudapp/gift_card.rb",
     "lib/cloudapp/httparty.rb",
     "lib/cloudapp/multipart.rb",
+    "lib/cloudapp/response_error.rb",
     "lib/cloudapp_api.rb",
     "spec/cloudapp_account_spec.rb",
     "spec/cloudapp_api_spec.rb",
@@ -40,6 +41,7 @@ Gem::Specification.new do |s|
     "spec/cloudapp_drop_spec.rb",
     "spec/cloudapp_gift_card_spec.rb",
     "spec/cloudapp_item_spec.rb",
+    "spec/cloudapp_response_error_spec.rb",
     "spec/fakeweb_helper.rb",
     "spec/spec_helper.rb",
     "spec/stubs/account/create",
@@ -54,12 +56,18 @@ Gem::Specification.new do |s|
     "spec/stubs/drop/show",
     "spec/stubs/drop/show-private",
     "spec/stubs/drop/update",
+    "spec/stubs/error/400",
+    "spec/stubs/error/401",
+    "spec/stubs/error/404-find",
+    "spec/stubs/error/404-update",
+    "spec/stubs/error/422-bookmark",
+    "spec/stubs/error/422-bookmarks",
     "spec/stubs/gift_card/redeem",
     "spec/stubs/gift_card/show"
   ]
   s.homepage = %q{http://github.com/aaronrussell/cloud_app}
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.7.2}
+  s.rubygems_version = %q{1.3.7}
   s.summary = %q{A simple Ruby wrapper for the CloudApp API. Uses HTTParty with a simple ActiveResource-like interface.}
   s.test_files = [
     "spec/cloudapp_account_spec.rb",
@@ -68,11 +76,13 @@ Gem::Specification.new do |s|
     "spec/cloudapp_drop_spec.rb",
     "spec/cloudapp_gift_card_spec.rb",
     "spec/cloudapp_item_spec.rb",
+    "spec/cloudapp_response_error_spec.rb",
     "spec/fakeweb_helper.rb",
     "spec/spec_helper.rb"
   ]
 
   if s.respond_to? :specification_version then
+    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
