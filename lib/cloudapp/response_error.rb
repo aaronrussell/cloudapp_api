@@ -21,14 +21,14 @@ module CloudApp
     #
     # @return [String]
     def to_s
-      puts "#{code} #{response.msg}"
+      "#{code.to_s} #{response.msg}".strip
     end
     
     private
     
     def parse_errors(errors)
       return case errors
-        when Hash:    errors.collect{|k,v| "#{k} #{v}"}
+        when Hash:    errors.collect{|k,v| "#{k}: #{v}"}
         when String:  [errors]
         when Array:   errors
         else []

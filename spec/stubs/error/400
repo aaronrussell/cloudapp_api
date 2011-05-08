@@ -1,0 +1,6 @@
+HTTP/1.1 400 Bad Request
+Status: 400
+Content-Type: application/xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<Error><Code>MalformedPOSTRequest</Code><Message>The body of your POST request is not well-formed multipart/form-data.</Message><RequestId>1BD4C1A789889BA4</RequestId><HostId>9i/ZNBBvYD+KKoHBRUU6/9uqu/0XvFkNmvBiiLhn/hEZXOes/xVRrHim//JC9mmi</HostId></Error>

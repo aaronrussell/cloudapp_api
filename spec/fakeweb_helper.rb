@@ -16,8 +16,8 @@ def fake_it_all
     :get => {
       %r{http://cl.ly/\w+}                => File.join('drop', 'show'),
       'http://my.cl.ly/items'             => File.join('drop', 'index'),
-      'http://my.cl.ly/items/new'         => File.join('drop', 'new-private'),
-      'http://my.cl.ly/items/new?item[private]=true' => File.join('drop', 'new'),
+      'http://my.cl.ly/items/new'         => File.join('drop', 'new'),
+      'http://my.cl.ly/items/new?item[private]=true' => File.join('drop', 'new-private'),
       'http://my.cl.ly/items/s3'          => File.join('drop', 'show'),
       'http://my.cl.ly/items/s3?item[private]=true' => File.join('drop', 'show-private'),
       'http://my.cl.ly/account'           => File.join('account', 'show'),
@@ -41,6 +41,25 @@ def fake_it_all
     }
   }.
   each do |method, requests|
+    requests.each do |url, response|
+      FakeWeb.register_uri(method, url, :response => stub_file(response))
+    end
+  end
+end
+
+def fake_it_all_with_errors
+  FakeWeb.clean_registry
+  FakeWeb.register_uri :head, %r{http://(my.|f.)?cl.ly(/items)?}, :status => ["200", "OK"]
+  {
+    :get => {
+      'http://my.cl.ly/items'             => File.join('error', '401'),
+      %r{http://cl.ly/\w+}                => File.join('error', '404-find'),
+      'http://my.cl.ly/items/new'         => File.join('drop', 'new')
+    },
+    :put => {
+      %r{http://my.cl.ly/items/\d+}       => File.join('error', '404-update')
+    }
+  }.each do |method, requests|
     requests.each do |url, response|
       FakeWeb.register_uri(method, url, :response => stub_file(response))
     end
