@@ -10,7 +10,7 @@ end
 module CloudApp
   
   # Version number
-  VERSION = "0.2.2"
+  VERSION = "0.3.0"
   
   # Sets the authentication credentials in a class variable
   #
