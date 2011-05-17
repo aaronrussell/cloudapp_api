@@ -154,9 +154,9 @@ Authentication is necessary for most actions, the only exceptions being when cre
       # or
     @gift.redeem
 
-## To do
+## What's next on the to-do list?
 
-* Much better error handling
+* Refactor the Client interface so can be used with all of the API
 
 ## Note on Patches/Pull Requests
  
