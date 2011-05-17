@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Aaron Russell"]
-  s.date = %q{2011-05-08}
+  s.date = %q{2011-05-16}
   s.description = %q{A simple Ruby wrapper for the CloudApp API. Uses HTTParty with a simple ActiveResource-like interface.}
   s.email = %q{aaron@gc4.co.uk}
   s.extra_rdoc_files = [
@@ -65,9 +65,9 @@ Gem::Specification.new do |s|
     "spec/stubs/gift_card/redeem",
     "spec/stubs/gift_card/show"
   ]
-  s.homepage = %q{http://github.com/aaronrussell/cloud_app}
+  s.homepage = %q{http://github.com/aaronrussell/cloudapp_api}
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.7}
+  s.rubygems_version = %q{1.5.3}
   s.summary = %q{A simple Ruby wrapper for the CloudApp API. Uses HTTParty with a simple ActiveResource-like interface.}
   s.test_files = [
     "spec/cloudapp_account_spec.rb",
@@ -82,7 +82,6 @@ Gem::Specification.new do |s|
   ]
 
   if s.respond_to? :specification_version then
-    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
