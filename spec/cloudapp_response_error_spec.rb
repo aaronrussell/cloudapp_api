@@ -42,8 +42,6 @@ describe CloudApp::ResponseError, "when item doesn't exist" do
 end
 
 
-# This test will currently fail. CloudApp shouldn't return a HTML response.
-# In fairness it shouldn't really return a 404 either.
 describe CloudApp::ResponseError, "when updating someone elses item" do
   
   before(:each) do
@@ -52,19 +50,22 @@ describe CloudApp::ResponseError, "when updating someone elses item" do
   end
   
   it "should raise a 404" do
-    @error.should raise_error(CloudApp::ResponseError, "404 Not Found")
+    pending "CloudApp shouldn't return a HTML response (or a 404 for that matter)" do
+      @error.should raise_error(CloudApp::ResponseError, "404 Not Found")
+    end
   end
   
   it "should return a code and error messages" do
-    @error.should raise_error{|e|
-      e.code.should == 404
-    }
+    pending "CloudApp shouldn't return a HTML response (or a 404 for that matter)" do
+      @error.should raise_error{|e|
+        e.code.should == 404
+      }
+    end
   end
   
 end
 
 
-# This test will currently fail. CloudApp shouldn't return a HTML response.
 describe "when recovering an unrecoverable item" do
   
   before(:each) do
@@ -73,13 +74,17 @@ describe "when recovering an unrecoverable item" do
   end
   
   it "should raise a 404" do
-    @error.should raise_error(CloudApp::ResponseError, "404 Not Found")
+    pending "CloudApp shouldn't return a HTML response" do
+      @error.should raise_error(CloudApp::ResponseError, "404 Not Found")
+    end
   end
   
   it "should return a code and error messages" do
-    @error.should raise_error{|e|
-      e.code.should == 404
-    }
+    pending "CloudApp shouldn't return a HTML response" do
+      @error.should raise_error{|e|
+        e.code.should == 404
+      }
+    end
   end
   
 end
