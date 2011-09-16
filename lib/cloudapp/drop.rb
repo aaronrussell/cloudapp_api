@@ -151,7 +151,7 @@ module CloudApp
     end
     
     attr_reader :href, :name, :private, :url, :content_url, :item_type, :view_counter,
-                :icon, :remote_url, :redirect_url, :created_at, :updated_at, :deleted_at
+                :icon, :remote_url, :redirect_url, :source, :created_at, :updated_at, :deleted_at
     
     # Modify the drop. Can currently modify it's name or security setting by passing parameters.
     #
