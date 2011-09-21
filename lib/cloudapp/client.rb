@@ -106,7 +106,7 @@ module CloudApp
       if args[0].is_a? Array
         Drop.create(:bookmarks, args)
       else
-        name, url = args[0], (args[1] || "")
+        url, name = args[0], (args[1] || "")
         Drop.create(:bookmark, {:name => name, :redirect_url => url})
       end
     end
