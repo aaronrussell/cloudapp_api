@@ -115,7 +115,8 @@ module CloudApp
     end
         
     attr_reader :id, :email, :domain, :domain_home_page, :private_items,
-                :subscribed, :alpha, :created_at, :updated_at, :activated_at
+                :subscribed, :subscription_expires_at, :alpha,
+                :created_at, :updated_at, :activated_at
     
     # Modify the authenticated accounts details. Can change the default security of newly
     # created drops, the accounts email address, password, and custom domain details.

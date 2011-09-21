@@ -51,6 +51,10 @@ describe CloudApp::Drop do
     @drop.redirect_url == nil
   end
   
+  it "should return a source" do
+    @drop.source == "Cloud/1.5.1 CFNetwork/520.0.13 Darwin/11.0.0 (x86_64) (MacBookPro5%2C5)"
+  end
+  
   it "should return timestamps" do
     @drop.created_at.should be_a_kind_of Time
     @drop.updated_at.should be_a_kind_of Time

@@ -33,7 +33,11 @@ describe CloudApp::Account do
   end
   
   it "should return a subscribed boolean" do
-    @account.subscribed.should == false
+    @account.subscribed.should == true
+  end
+  
+  it "should return a subscription expiration date" do
+    @account.subscription_expires_at == "2012-05-21"
   end
   
   it "should return a alpha boolean" do
