@@ -104,7 +104,7 @@ module CloudApp
         res = post "/items", {:body => {:items => opts}, :digest_auth => @@auth}
       when :upload
         r = get "/items/new", {:query => ({:item => {:private => opts[:private]}} if opts.has_key?(:private)), :digest_auth => @@auth}
-        return bad_response(res) unless r.ok?
+        return bad_response(r) unless r.ok?
         res = post r['url'], Multipart.new(r['params'].merge!(:file => File.new(opts[:file]))).payload.merge!(:digest_auth => @@auth)
       else
         # TODO raise an error
