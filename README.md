@@ -170,6 +170,7 @@ Authentication is necessary for most actions, the only exceptions being when cre
 ## Author & Contributors
 
 * [Aaron Russell](http://www.aaronrussell.co.uk)
+* [Christian Nicolai](https://github.com/cmur2)
 
 ## Copyright
 
