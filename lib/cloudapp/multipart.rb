@@ -22,7 +22,8 @@ module CloudApp
     
     def payload #:nodoc:
       {
-        :headers => {"Content-Type" => "multipart/form-data; boundary=#{boundary}"},
+        :headers => {"User-Agent" => "Ruby.CloudApp.API",
+          "Content-Type" => "multipart/form-data; boundary=#{boundary}"},
         :body => @body
       }
     end
