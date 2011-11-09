@@ -177,6 +177,13 @@ module CloudApp
       self.class.recover self.href
     end
     
+    # Is the drop an image?
+    #
+    # @return [Boolean]
+    def image?
+      item_type == 'image'
+    end
+    
     # Is the drop a bookmark?
     #
     # @return [Boolean]
@@ -184,13 +191,54 @@ module CloudApp
       item_type == 'bookmark'
     end
     
-    # Is the drop an image?
+    # Is the drop a text file?
     #
     # @return [Boolean]
-    def image?
-      item_type == 'image'
+    def text?
+      item_type == 'text'
     end
-        
+    
+    # Is the drop an archive?
+    #
+    # @return [Boolean]
+    def archive?
+      item_type == 'archive'
+    end
+    
+    # Is the drop an audio file?
+    #
+    # @return [Boolean]
+    def audio?
+      item_type == 'audio'
+    end
+    
+    # Is the drop a video file?
+    #
+    # @return [Boolean]
+    def video?
+      item_type == 'video'
+    end
+    
+    # Is the drop an unknown file type?
+    #
+    # @return [Boolean]
+    def unknown?
+      item_type == 'unknown'
+    end
+    
+    # Return the drops raw data as a string, useful for returning the text of documents
+    #
+    # @return [String]
+    def raw
+      @raw ||= HTTParty.get(content_url).to_s
+    end
+    
+    private
+    
+    def extension
+      File.extname(content_url)[1..-1].to_s.downcase if content_url
+    end
+    
   end
   
   # The Item class is now deprecated in favour of the Drop class.
