@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "cloudapp_api"
-  s.version = "0.3.2"
+  s.version = "0.3.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Aaron Russell"]
-  s.date = "2011-10-14"
+  s.date = "2011-11-09"
   s.description = "A simple Ruby wrapper for the CloudApp API. Uses HTTParty with a simple ActiveResource-like interface."
   s.email = "aaron@gc4.co.uk"
   s.extra_rdoc_files = [
