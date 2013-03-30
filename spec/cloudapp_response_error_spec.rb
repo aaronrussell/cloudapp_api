@@ -14,7 +14,7 @@ describe CloudApp::ResponseError, "when not logged in" do
   it "should return a code and error messages" do
     @error.should raise_error{|e|
       e.code.should == 401
-      e.errors[0].should == "HTTP Digest: Access denied."
+      e.errors[0].should == "HTTP Digest: \"Access denied.\""
     }
   end
   
