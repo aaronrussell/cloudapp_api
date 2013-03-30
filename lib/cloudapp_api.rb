@@ -1,6 +1,6 @@
 require "httparty"
 require "yaml" unless defined?(YAML)
-YAML::ENGINE.yamler = "syck" if defined?(YAML::ENGINE)
+YAML::ENGINE.yamler = "syck" if defined?(YAML::ENGINE) && RUBY_VERSION < "2.0.0"
 
 ["base", "drop", "account", "gift_card", "client", "multipart", "httparty", "core_ext", "response_error"].each do |inc|
   require File.join(File.dirname(__FILE__), "cloudapp", inc)
