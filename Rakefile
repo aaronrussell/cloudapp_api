@@ -20,9 +20,9 @@ Jeweler::Tasks.new do |gem|
   gem.authors     = ["Aaron Russell"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
   # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
-  gem.add_runtime_dependency "httparty", ">= 0.6.0"
-  gem.add_development_dependency "rspec", "~> 2.1.0"
-  gem.add_development_dependency "yard", "~> 0.6.0"
+  gem.add_runtime_dependency "httparty"
+  gem.add_development_dependency "rspec"
+  gem.add_development_dependency "yard"
 end
 Jeweler::RubygemsDotOrgTasks.new
 
