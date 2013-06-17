@@ -1,5 +1,9 @@
 # CloudApp API
 
+[![Build Status](https://travis-ci.org/aaronrussell/cloudapp_api.png)](https://travis-ci.org/aaronrussell/cloudapp_api)
+[![Code Climate](https://codeclimate.com/github/aaronrussell/cloudapp_api.png)](https://codeclimate.com/github/aaronrussell/cloudapp_api)
+[![Coverage Status](https://coveralls.io/repos/aaronrussell/cloudapp_api/badge.png?branch=master)](https://coveralls.io/r/aaronrussell/cloudapp_api)
+
 A simple Ruby wrapper for the [CloudApp API](http://support.getcloudapp.com/faqs/developers/api). Uses [HTTParty](http://github.com/jnunemaker/httparty) with a simple ActiveResource-like interface.
 
 Two interfaces are provided for interacting with the CloudApp API. The first is a ActiveResource-like interface, directly calling methods on the Drop and Account classes. The second option is to interact through a Client interface.

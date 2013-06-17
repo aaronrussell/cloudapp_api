@@ -7,6 +7,7 @@ gem "mime-types"
 # Include everything needed to run rake, tests, features, etc.
 group :development do
   gem "rspec"
+  gem 'coveralls', :require => false
   gem "fakeweb"
   gem "yard"
   gem "bluecloth"

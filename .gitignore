@@ -15,6 +15,7 @@ tmtags
 
 ## PROJECT::GENERAL
 .autotest
+.ruby-*
 .yardoc
 coverage
 doc
