@@ -1,7 +1,5 @@
 require 'fakeweb'
 
-FakeWeb.allow_net_connect = false
-
 def stub_file(stub)
   File.join(File.dirname(__FILE__), 'stubs', stub)
 end
