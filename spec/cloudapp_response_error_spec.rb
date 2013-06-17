@@ -14,7 +14,7 @@ describe CloudApp::ResponseError, "when not logged in" do
   it "should return a code and error messages" do
     @error.should raise_error{|e|
       e.code.should == 401
-      e.errors[0].should == "HTTP Digest: Access denied."
+      e.errors[0].should == "HTTP Digest: \"Access denied.\""
     }
   end
   
@@ -50,17 +50,13 @@ describe CloudApp::ResponseError, "when updating someone elses item" do
   end
   
   it "should raise a 404" do
-    pending "CloudApp shouldn't return a HTML response (or a 404 for that matter)" do
-      @error.should raise_error(CloudApp::ResponseError, "404 Not Found")
-    end
+    @error.should raise_error(CloudApp::ResponseError, "404 Not Found")
   end
   
   it "should return a code and error messages" do
-    pending "CloudApp shouldn't return a HTML response (or a 404 for that matter)" do
-      @error.should raise_error{|e|
-        e.code.should == 404
-      }
-    end
+    @error.should raise_error{|e|
+      e.code.should == 404
+    }
   end
   
 end
@@ -74,17 +70,13 @@ describe "when recovering an unrecoverable item" do
   end
   
   it "should raise a 404" do
-    pending "CloudApp shouldn't return a HTML response" do
-      @error.should raise_error(CloudApp::ResponseError, "404 Not Found")
-    end
+    @error.should raise_error(CloudApp::ResponseError, "404 Not Found")
   end
   
   it "should return a code and error messages" do
-    pending "CloudApp shouldn't return a HTML response" do
-      @error.should raise_error{|e|
-        e.code.should == 404
-      }
-    end
+    @error.should raise_error{|e|
+      e.code.should == 404
+    }
   end
   
 end

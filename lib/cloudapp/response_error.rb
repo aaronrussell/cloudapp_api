@@ -14,7 +14,11 @@ module CloudApp
     def initialize(res)
       @response = res.response
       @code     = res.code
-      @errors   = parse_errors(res.parsed_response)
+      begin
+        @errors = parse_errors(res.parsed_response)
+      rescue MultiJson::LoadError => ex
+        @errors = [res.response.body]
+      end
     end
     
     # Returns error code and message

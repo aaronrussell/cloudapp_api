@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "cloudapp_api"
+  s.name = %q{cloudapp_api}
   s.version = "0.3.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Aaron Russell"]
-  s.date = "2011-11-09"
-  s.description = "A simple Ruby wrapper for the CloudApp API. Uses HTTParty with a simple ActiveResource-like interface."
-  s.email = "aaron@gc4.co.uk"
+  s.authors = [%q{Aaron Russell}]
+  s.date = %q{2013-03-30}
+  s.description = %q{A simple Ruby wrapper for the CloudApp API. Uses HTTParty with a simple ActiveResource-like interface.}
+  s.email = %q{aaron@gc4.co.uk}
   s.extra_rdoc_files = [
     "LICENSE",
     "README.md"
@@ -19,7 +19,6 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
     "Gemfile",
-    "Gemfile.lock",
     "LICENSE",
     "README.md",
     "Rakefile",
@@ -65,68 +64,54 @@ Gem::Specification.new do |s|
     "spec/stubs/gift_card/redeem",
     "spec/stubs/gift_card/show"
   ]
-  s.homepage = "http://github.com/aaronrussell/cloudapp_api"
-  s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.10"
-  s.summary = "A simple Ruby wrapper for the CloudApp API. Uses HTTParty with a simple ActiveResource-like interface."
-  s.test_files = [
-    "spec/cloudapp_account_spec.rb",
-    "spec/cloudapp_api_spec.rb",
-    "spec/cloudapp_client_spec.rb",
-    "spec/cloudapp_drop_spec.rb",
-    "spec/cloudapp_gift_card_spec.rb",
-    "spec/cloudapp_item_spec.rb",
-    "spec/cloudapp_response_error_spec.rb",
-    "spec/fakeweb_helper.rb",
-    "spec/spec_helper.rb"
-  ]
+  s.homepage = %q{http://github.com/aaronrussell/cloudapp_api}
+  s.require_paths = [%q{lib}]
+  s.rubygems_version = %q{1.8.6}
+  s.summary = %q{A simple Ruby wrapper for the CloudApp API. Uses HTTParty with a simple ActiveResource-like interface.}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<httparty>, [">= 0.6.0"])
+      s.add_runtime_dependency(%q<httparty>, [">= 0"])
       s.add_runtime_dependency(%q<mime-types>, [">= 0"])
-      s.add_development_dependency(%q<rspec>, ["~> 2.1.0"])
+      s.add_development_dependency(%q<rspec>, [">= 0"])
       s.add_development_dependency(%q<fakeweb>, [">= 0"])
-      s.add_development_dependency(%q<yard>, ["~> 0.6.0"])
+      s.add_development_dependency(%q<yard>, [">= 0"])
       s.add_development_dependency(%q<bluecloth>, [">= 0"])
       s.add_development_dependency(%q<cucumber>, [">= 0"])
-      s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
-      s.add_development_dependency(%q<jeweler>, ["~> 1.5.1"])
-      s.add_development_dependency(%q<rcov>, [">= 0"])
-      s.add_runtime_dependency(%q<httparty>, [">= 0.6.0"])
-      s.add_development_dependency(%q<rspec>, ["~> 2.1.0"])
-      s.add_development_dependency(%q<yard>, ["~> 0.6.0"])
+      s.add_development_dependency(%q<bundler>, [">= 0"])
+      s.add_development_dependency(%q<jeweler>, [">= 0"])
+      s.add_runtime_dependency(%q<httparty>, [">= 0"])
+      s.add_development_dependency(%q<rspec>, [">= 0"])
+      s.add_development_dependency(%q<yard>, [">= 0"])
     else
-      s.add_dependency(%q<httparty>, [">= 0.6.0"])
+      s.add_dependency(%q<httparty>, [">= 0"])
       s.add_dependency(%q<mime-types>, [">= 0"])
-      s.add_dependency(%q<rspec>, ["~> 2.1.0"])
+      s.add_dependency(%q<rspec>, [">= 0"])
       s.add_dependency(%q<fakeweb>, [">= 0"])
-      s.add_dependency(%q<yard>, ["~> 0.6.0"])
+      s.add_dependency(%q<yard>, [">= 0"])
       s.add_dependency(%q<bluecloth>, [">= 0"])
       s.add_dependency(%q<cucumber>, [">= 0"])
-      s.add_dependency(%q<bundler>, ["~> 1.0.0"])
-      s.add_dependency(%q<jeweler>, ["~> 1.5.1"])
-      s.add_dependency(%q<rcov>, [">= 0"])
-      s.add_dependency(%q<httparty>, [">= 0.6.0"])
-      s.add_dependency(%q<rspec>, ["~> 2.1.0"])
-      s.add_dependency(%q<yard>, ["~> 0.6.0"])
+      s.add_dependency(%q<bundler>, [">= 0"])
+      s.add_dependency(%q<jeweler>, [">= 0"])
+      s.add_dependency(%q<httparty>, [">= 0"])
+      s.add_dependency(%q<rspec>, [">= 0"])
+      s.add_dependency(%q<yard>, [">= 0"])
     end
   else
-    s.add_dependency(%q<httparty>, [">= 0.6.0"])
+    s.add_dependency(%q<httparty>, [">= 0"])
     s.add_dependency(%q<mime-types>, [">= 0"])
-    s.add_dependency(%q<rspec>, ["~> 2.1.0"])
+    s.add_dependency(%q<rspec>, [">= 0"])
     s.add_dependency(%q<fakeweb>, [">= 0"])
-    s.add_dependency(%q<yard>, ["~> 0.6.0"])
+    s.add_dependency(%q<yard>, [">= 0"])
     s.add_dependency(%q<bluecloth>, [">= 0"])
     s.add_dependency(%q<cucumber>, [">= 0"])
-    s.add_dependency(%q<bundler>, ["~> 1.0.0"])
-    s.add_dependency(%q<jeweler>, ["~> 1.5.1"])
-    s.add_dependency(%q<rcov>, [">= 0"])
-    s.add_dependency(%q<httparty>, [">= 0.6.0"])
-    s.add_dependency(%q<rspec>, ["~> 2.1.0"])
-    s.add_dependency(%q<yard>, ["~> 0.6.0"])
+    s.add_dependency(%q<bundler>, [">= 0"])
+    s.add_dependency(%q<jeweler>, [">= 0"])
+    s.add_dependency(%q<httparty>, [">= 0"])
+    s.add_dependency(%q<rspec>, [">= 0"])
+    s.add_dependency(%q<yard>, [">= 0"])
   end
 end
 
