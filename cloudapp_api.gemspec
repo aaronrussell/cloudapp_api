@@ -4,21 +4,23 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{cloudapp_api}
-  s.version = "0.3.3"
+  s.name = "cloudapp_api"
+  s.version = "0.4.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = [%q{Aaron Russell}]
-  s.date = %q{2013-03-30}
-  s.description = %q{A simple Ruby wrapper for the CloudApp API. Uses HTTParty with a simple ActiveResource-like interface.}
-  s.email = %q{aaron@gc4.co.uk}
+  s.authors = ["Aaron Russell"]
+  s.date = "2013-06-17"
+  s.description = "A simple Ruby wrapper for the CloudApp API. Uses HTTParty with a simple ActiveResource-like interface."
+  s.email = "aaron@gc4.co.uk"
   s.extra_rdoc_files = [
     "LICENSE",
     "README.md"
   ]
   s.files = [
     ".document",
+    ".travis.yml",
     "Gemfile",
+    "Gemfile.lock",
     "LICENSE",
     "README.md",
     "Rakefile",
@@ -64,10 +66,10 @@ Gem::Specification.new do |s|
     "spec/stubs/gift_card/redeem",
     "spec/stubs/gift_card/show"
   ]
-  s.homepage = %q{http://github.com/aaronrussell/cloudapp_api}
-  s.require_paths = [%q{lib}]
-  s.rubygems_version = %q{1.8.6}
-  s.summary = %q{A simple Ruby wrapper for the CloudApp API. Uses HTTParty with a simple ActiveResource-like interface.}
+  s.homepage = "http://github.com/aaronrussell/cloudapp_api"
+  s.require_paths = ["lib"]
+  s.rubygems_version = "1.8.25"
+  s.summary = "A simple Ruby wrapper for the CloudApp API. Uses HTTParty with a simple ActiveResource-like interface."
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
@@ -76,6 +78,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<httparty>, [">= 0"])
       s.add_runtime_dependency(%q<mime-types>, [">= 0"])
       s.add_development_dependency(%q<rspec>, [">= 0"])
+      s.add_development_dependency(%q<coveralls>, [">= 0"])
       s.add_development_dependency(%q<fakeweb>, [">= 0"])
       s.add_development_dependency(%q<yard>, [">= 0"])
       s.add_development_dependency(%q<bluecloth>, [">= 0"])
@@ -89,6 +92,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<httparty>, [">= 0"])
       s.add_dependency(%q<mime-types>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 0"])
+      s.add_dependency(%q<coveralls>, [">= 0"])
       s.add_dependency(%q<fakeweb>, [">= 0"])
       s.add_dependency(%q<yard>, [">= 0"])
       s.add_dependency(%q<bluecloth>, [">= 0"])
@@ -103,6 +107,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<httparty>, [">= 0"])
     s.add_dependency(%q<mime-types>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 0"])
+    s.add_dependency(%q<coveralls>, [">= 0"])
     s.add_dependency(%q<fakeweb>, [">= 0"])
     s.add_dependency(%q<yard>, [">= 0"])
     s.add_dependency(%q<bluecloth>, [">= 0"])
