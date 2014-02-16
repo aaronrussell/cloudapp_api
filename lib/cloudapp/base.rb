@@ -36,11 +36,11 @@ module CloudApp
       if response.class == HTTParty::Response
         raise ResponseError, response
       end
-      raise StandardError, "Unkown error"
+      raise StandardError, "Unknown error"
     end
-    
+
     attr_reader :data
-    
+
     # Create a new CloudApp::Base object.
     #
     # Only used internally
