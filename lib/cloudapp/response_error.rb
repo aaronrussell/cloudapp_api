@@ -16,7 +16,7 @@ module CloudApp
       @code     = res.code
       begin
         @errors = parse_errors(res.parsed_response)
-      rescue MultiJson::LoadError => ex
+      rescue JSON::ParserError => ex
         @errors = [res.response.body]
       end
     end
