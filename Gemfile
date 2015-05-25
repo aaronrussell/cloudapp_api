@@ -1,6 +1,7 @@
 source "http://rubygems.org"
+
 # Add dependencies required to use your gem here.
-gem "httparty"
+gem "httparty", "~> 0.13.5"
 gem "mime-types"
 
 # Add dependencies to develop your gem here.
