@@ -2,7 +2,7 @@ require "json"
 
 module HTTParty #:nodoc:
   
-  class Response < HTTParty::BasicObject #:nodoc:
+  class Response < ::BasicObject #:nodoc:
     def ok?
       [200, 201, 202].include?(self.code)
     end
