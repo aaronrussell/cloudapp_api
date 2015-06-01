@@ -9,22 +9,7 @@ rescue Bundler::BundlerError => e
 end
 require 'rake'
 
-require 'jeweler'
-Jeweler::Tasks.new do |gem|
-  # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name        = "cloudapp_api"
-  gem.homepage    = "http://github.com/aaronrussell/cloudapp_api"
-  gem.summary     = %Q{A simple Ruby wrapper for the CloudApp API. Uses HTTParty with a simple ActiveResource-like interface.}
-  gem.description = %Q{A simple Ruby wrapper for the CloudApp API. Uses HTTParty with a simple ActiveResource-like interface.}
-  gem.email       = "aaron@gc4.co.uk"
-  gem.authors     = ["Aaron Russell"]
-  # Include your dependencies below. Runtime dependencies are required when using your gem,
-  # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
-  gem.add_runtime_dependency "httparty"
-  gem.add_development_dependency "rspec"
-  gem.add_development_dependency "yard"
-end
-Jeweler::RubygemsDotOrgTasks.new
+Bundler::GemHelper.install_tasks
 
 require 'rspec/core'
 require 'rspec/core/rake_task'

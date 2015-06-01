@@ -72,52 +72,13 @@ Gem::Specification.new do |s|
   s.rubygems_version = "2.4.4"
   s.summary = "A simple Ruby wrapper for the CloudApp API. Uses HTTParty with a simple ActiveResource-like interface."
 
-  if s.respond_to? :specification_version then
-    s.specification_version = 4
-
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<httparty>, ["~> 0.13.5"])
-      s.add_runtime_dependency(%q<mime-types>, [">= 0"])
-      s.add_development_dependency(%q<rspec>, [">= 0"])
-      s.add_development_dependency(%q<coveralls>, [">= 0"])
-      s.add_development_dependency(%q<fakeweb>, [">= 0"])
-      s.add_development_dependency(%q<yard>, [">= 0"])
-      s.add_development_dependency(%q<bluecloth>, [">= 0"])
-      s.add_development_dependency(%q<cucumber>, [">= 0"])
-      s.add_development_dependency(%q<bundler>, [">= 0"])
-      s.add_development_dependency(%q<jeweler>, [">= 0"])
-      s.add_runtime_dependency(%q<httparty>, [">= 0"])
-      s.add_development_dependency(%q<rspec>, [">= 0"])
-      s.add_development_dependency(%q<yard>, [">= 0"])
-    else
-      s.add_dependency(%q<httparty>, ["~> 0.13.5"])
-      s.add_dependency(%q<mime-types>, [">= 0"])
-      s.add_dependency(%q<rspec>, [">= 0"])
-      s.add_dependency(%q<coveralls>, [">= 0"])
-      s.add_dependency(%q<fakeweb>, [">= 0"])
-      s.add_dependency(%q<yard>, [">= 0"])
-      s.add_dependency(%q<bluecloth>, [">= 0"])
-      s.add_dependency(%q<cucumber>, [">= 0"])
-      s.add_dependency(%q<bundler>, [">= 0"])
-      s.add_dependency(%q<jeweler>, [">= 0"])
-      s.add_dependency(%q<httparty>, [">= 0"])
-      s.add_dependency(%q<rspec>, [">= 0"])
-      s.add_dependency(%q<yard>, [">= 0"])
-    end
-  else
-    s.add_dependency(%q<httparty>, ["~> 0.13.5"])
-    s.add_dependency(%q<mime-types>, [">= 0"])
-    s.add_dependency(%q<rspec>, [">= 0"])
-    s.add_dependency(%q<coveralls>, [">= 0"])
-    s.add_dependency(%q<fakeweb>, [">= 0"])
-    s.add_dependency(%q<yard>, [">= 0"])
-    s.add_dependency(%q<bluecloth>, [">= 0"])
-    s.add_dependency(%q<cucumber>, [">= 0"])
-    s.add_dependency(%q<bundler>, [">= 0"])
-    s.add_dependency(%q<jeweler>, [">= 0"])
-    s.add_dependency(%q<httparty>, [">= 0"])
-    s.add_dependency(%q<rspec>, [">= 0"])
-    s.add_dependency(%q<yard>, [">= 0"])
-  end
+  s.add_runtime_dependency 'httparty', "~> 0.13.5"
+  s.add_runtime_dependency 'mime-types', ">= 1.16"
+  s.add_development_dependency 'rspec', "~> 2.13.0"
+  s.add_development_dependency 'coveralls', "~> 0.6.7"
+  s.add_development_dependency 'fakeweb', "~> 1.3.0"
+  s.add_development_dependency 'yard', "~> 0.8.6.1"
+  s.add_development_dependency 'bluecloth', "~> 2.2.0"
+  s.add_development_dependency 'cucumber', "~> 1.3.2"
 end
 

@@ -13,6 +13,4 @@ group :development do
   gem "yard"
   gem "bluecloth"
   gem "cucumber"
-  gem "bundler"
-  gem "jeweler"
 end
