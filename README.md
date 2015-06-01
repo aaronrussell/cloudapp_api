@@ -16,6 +16,8 @@ To install as a Gem:
 
     sudo gem install cloudapp_api
 
+**(Version 0.5.0 ends compaitibility with Ruby 1.8.7. If you need 1.8.7 support, you can still use version 0.4.0 of this gem.)**
+
 ## Authentication
 
 Authentication is necessary for most actions, the only exceptions being when creating a new Account or querying a specific Drop.
